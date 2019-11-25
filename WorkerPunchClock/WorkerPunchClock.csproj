@@ -124,6 +124,9 @@
     <None Include="Resources\CalendarIcon.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\TimeClockIcon.png" />
+    <None Include="Resources\VactionIcon.png" />
+    <None Include="Resources\PayStubIcon.png" />
     <Content Include="StaffDataBase.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
