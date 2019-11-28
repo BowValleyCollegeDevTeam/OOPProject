@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ManagerMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagerMainMenu.Designer.cs">
+      <DependentUpon>ManagerMainMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaffDataBaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -80,6 +86,9 @@
     <Compile Include="StaffMainMenu.Designer.cs">
       <DependentUpon>StaffMainMenu.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ManagerMainMenu.resx">
+      <DependentUpon>ManagerMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -127,6 +136,11 @@
     <None Include="Resources\TimeClockIcon.png" />
     <None Include="Resources\VactionIcon.png" />
     <None Include="Resources\PayStubIcon.png" />
+    <None Include="Resources\EditScheduleIcon.png" />
+    <None Include="Resources\AddEditEmployeeIcon.png" />
+    <None Include="Resources\AcceptIcon.png" />
+    <None Include="Resources\AcceptPayStubIcon.png" />
+    <None Include="Resources\AcceptRequestedTimeOffIcon.png" />
     <Content Include="StaffDataBase.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

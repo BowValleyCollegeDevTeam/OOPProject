@@ -63,9 +63,59 @@ namespace WorkerPunchClock.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AcceptIcon {
+            get {
+                object obj = ResourceManager.GetObject("AcceptIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AcceptPayStubIcon {
+            get {
+                object obj = ResourceManager.GetObject("AcceptPayStubIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AcceptRequestedTimeOffIcon {
+            get {
+                object obj = ResourceManager.GetObject("AcceptRequestedTimeOffIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AddEditEmployeeIcon {
+            get {
+                object obj = ResourceManager.GetObject("AddEditEmployeeIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CalendarIcon {
             get {
                 object obj = ResourceManager.GetObject("CalendarIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EditScheduleIcon {
+            get {
+                object obj = ResourceManager.GetObject("EditScheduleIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
