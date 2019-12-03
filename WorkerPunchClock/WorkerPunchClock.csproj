@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClockInOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClockInOut.Designer.cs">
+      <DependentUpon>ClockInOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManagerMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,15 @@
     <Compile Include="StaffMainMenu.Designer.cs">
       <DependentUpon>StaffMainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="WorkSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkSchedule.Designer.cs">
+      <DependentUpon>WorkSchedule.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ClockInOut.resx">
+      <DependentUpon>ClockInOut.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManagerMainMenu.resx">
       <DependentUpon>ManagerMainMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StaffMainMenu.resx">
       <DependentUpon>StaffMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkSchedule.resx">
+      <DependentUpon>WorkSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -141,13 +159,6 @@
     <None Include="Resources\AcceptIcon.png" />
     <None Include="Resources\AcceptPayStubIcon.png" />
     <None Include="Resources\AcceptRequestedTimeOffIcon.png" />
-    <Content Include="StaffDataBase.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="StaffDataBase_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>StaffDataBase.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

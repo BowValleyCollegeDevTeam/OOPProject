@@ -45,5 +45,55 @@ namespace WorkerPunchClock
         {
             WorkScheduleLabel.ForeColor = Color.Black;
         }
+
+        private void WorkSchedulePictureBox_Click(object sender, EventArgs e)
+        {
+            new WorkSchedule().Show();
+        }
+        private void ClockInOutMouseEnter(object sender, EventArgs e)
+        {
+            ClockInOutLabel.ForeColor = Color.Red;
+        }
+
+        private void ClockInOutMouseLeave(object sender, EventArgs e)
+        {
+            ClockInOutLabel.ForeColor = Color.Black;
+        }
+
+        private void ClockInOutPictureBox_Click(object sender, EventArgs e)
+        {
+            new ClockInOut().Show();
+
+        }
+
+        private void RequestTimeOffMouseEnter(object sender, EventArgs e)
+        {
+            RequestTimeOffLabel.ForeColor = Color.Red;
+        }
+
+        private void RequestTimeOffMouseLeave(object sender, EventArgs e)
+        {
+            RequestTimeOffLabel.ForeColor = Color.Black;
+        }
+
+        private void RequestTimeOffPictureBox_Click(object sender, EventArgs e)
+        {
+            new RequestTimeOff().Show();
+        }
+
+        private void PayStubMouseEnter(object sender, EventArgs e)
+        {
+            PayStubLabel.ForeColor = Color.Red;
+        }
+
+        private void PayStubMouseLeave(object sender, EventArgs e)
+        {
+            PayStubLabel.ForeColor = Color.Black;
+        }
+
+        private void PayStubPictureBox_Click(object sender, EventArgs e)
+        {
+            new PayStub().Show();
+        }
     }
 }

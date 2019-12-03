@@ -38,11 +38,11 @@
             this.TimeTimerTicker = new System.Windows.Forms.Timer(this.components);
             this.ClockInOutLabel = new System.Windows.Forms.Label();
             this.RequestTimeOffLabel = new System.Windows.Forms.Label();
+            this.PayStubLabel = new System.Windows.Forms.Label();
             this.PayStubPictureBox = new System.Windows.Forms.PictureBox();
             this.RequestTimeOffPictureBox = new System.Windows.Forms.PictureBox();
             this.ClockInOutPictureBox = new System.Windows.Forms.PictureBox();
             this.WorkSchedulePictureBox = new System.Windows.Forms.PictureBox();
-            this.PayStubLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PayStubPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RequestTimeOffPictureBox)).BeginInit();
@@ -141,6 +141,16 @@
             this.RequestTimeOffLabel.TabIndex = 6;
             this.RequestTimeOffLabel.Text = "Request Time Off";
             // 
+            // PayStubLabel
+            // 
+            this.PayStubLabel.AutoSize = true;
+            this.PayStubLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PayStubLabel.Location = new System.Drawing.Point(661, 215);
+            this.PayStubLabel.Name = "PayStubLabel";
+            this.PayStubLabel.Size = new System.Drawing.Size(81, 20);
+            this.PayStubLabel.TabIndex = 8;
+            this.PayStubLabel.Text = "Pay Stub";
+            // 
             // PayStubPictureBox
             // 
             this.PayStubPictureBox.Image = global::WorkerPunchClock.Properties.Resources.PayStubIcon;
@@ -150,6 +160,7 @@
             this.PayStubPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PayStubPictureBox.TabIndex = 7;
             this.PayStubPictureBox.TabStop = false;
+            this.PayStubPictureBox.Click += new System.EventHandler(this.PayStubPictureBox_Click);
             // 
             // RequestTimeOffPictureBox
             // 
@@ -160,6 +171,7 @@
             this.RequestTimeOffPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.RequestTimeOffPictureBox.TabIndex = 5;
             this.RequestTimeOffPictureBox.TabStop = false;
+            this.RequestTimeOffPictureBox.Click += new System.EventHandler(this.RequestTimeOffPictureBox_Click);
             // 
             // ClockInOutPictureBox
             // 
@@ -170,6 +182,7 @@
             this.ClockInOutPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ClockInOutPictureBox.TabIndex = 3;
             this.ClockInOutPictureBox.TabStop = false;
+            this.ClockInOutPictureBox.Click += new System.EventHandler(this.ClockInOutPictureBox_Click);
             // 
             // WorkSchedulePictureBox
             // 
@@ -180,18 +193,9 @@
             this.WorkSchedulePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.WorkSchedulePictureBox.TabIndex = 0;
             this.WorkSchedulePictureBox.TabStop = false;
+            this.WorkSchedulePictureBox.Click += new System.EventHandler(this.WorkSchedulePictureBox_Click);
             this.WorkSchedulePictureBox.MouseEnter += new System.EventHandler(this.WorkScheduleMouseEnter);
             this.WorkSchedulePictureBox.MouseLeave += new System.EventHandler(this.WorkScheduleMouseLeave);
-            // 
-            // PayStubLabel
-            // 
-            this.PayStubLabel.AutoSize = true;
-            this.PayStubLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PayStubLabel.Location = new System.Drawing.Point(661, 215);
-            this.PayStubLabel.Name = "PayStubLabel";
-            this.PayStubLabel.Size = new System.Drawing.Size(81, 20);
-            this.PayStubLabel.TabIndex = 8;
-            this.PayStubLabel.Text = "Pay Stub";
             // 
             // StaffMainMenu
             // 
