@@ -73,6 +73,18 @@
     <Compile Include="ManagerMainMenu.Designer.cs">
       <DependentUpon>ManagerMainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="PayStub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PayStub.Designer.cs">
+      <DependentUpon>PayStub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RequestTimeOff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequestTimeOff.Designer.cs">
+      <DependentUpon>RequestTimeOff.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaffDataBaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -104,6 +116,9 @@
     <EmbeddedResource Include="ManagerMainMenu.resx">
       <DependentUpon>ManagerMainMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PayStub.resx">
+      <DependentUpon>PayStub.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -114,6 +129,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RequestTimeOff.resx">
+      <DependentUpon>RequestTimeOff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StaffLogin.resx">
       <DependentUpon>StaffLogin.cs</DependentUpon>
     </EmbeddedResource>
