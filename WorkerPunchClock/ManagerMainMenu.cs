@@ -93,7 +93,7 @@ namespace WorkerPunchClock
 
         private void CreateEditSchedulePictureBox_Click(object sender, EventArgs e)
         {
-
+            new CreateEditSchedule().Show();
         }
 
         private void CreateEditScheduleMouseHover(object sender, EventArgs e)
@@ -108,7 +108,7 @@ namespace WorkerPunchClock
 
         private void CreateEditEmployeePictureBox_Click(object sender, EventArgs e)
         {
-
+            new CreateEditEmployee().Show();
         }
 
         private void CreateEditEmployeeMouseHover(object sender, EventArgs e)
@@ -123,7 +123,7 @@ namespace WorkerPunchClock
 
         private void ApprovePayStubsPictureBox_Click(object sender, EventArgs e)
         {
-
+            new ApprovePayStubs().Show();
         }
 
         private void ApprovePayStubsMouseHover(object sender, EventArgs e)
@@ -138,7 +138,7 @@ namespace WorkerPunchClock
 
         private void ApproveDenyTimeOffPictureBox_Click(object sender, EventArgs e)
         {
-
+            new ApproveDenyTimeOff().Show();
         }
 
         private void ApproveDenyTimeOffMouseHover(object sender, EventArgs e)
