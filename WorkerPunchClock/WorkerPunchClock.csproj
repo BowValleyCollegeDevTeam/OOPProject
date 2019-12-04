@@ -85,11 +85,6 @@
     <Compile Include="RequestTimeOff.Designer.cs">
       <DependentUpon>RequestTimeOff.cs</DependentUpon>
     </Compile>
-    <Compile Include="StaffDataBaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StaffDataBaseDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="StaffLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,17 +145,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="StaffDataBaseDataSet.xsc">
-      <DependentUpon>StaffDataBaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="StaffDataBaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>StaffDataBaseDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="StaffDataBaseDataSet.xss">
-      <DependentUpon>StaffDataBaseDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
