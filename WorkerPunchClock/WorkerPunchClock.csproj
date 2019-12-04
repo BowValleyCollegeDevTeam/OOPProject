@@ -49,6 +49,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -123,6 +125,11 @@
     <Compile Include="StaffMainMenu.Designer.cs">
       <DependentUpon>StaffMainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="WorkersDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkersDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="WorkSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +176,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="WorkersDataSet.xsc">
+      <DependentUpon>WorkersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="WorkersDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>WorkersDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WorkersDataSet.xss">
+      <DependentUpon>WorkersDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

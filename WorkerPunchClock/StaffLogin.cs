@@ -8,17 +8,69 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace WorkerPunchClock
 {
     //testing
     public partial class StaffLogin : Form
     {
+        private string dbConnectionString;
         public StaffLogin()
         {
             InitializeComponent();
         }
+        public void getEmployeePinLogin()
+        {
+            dbConnectionString = ConfigurationManager.ConnectionStrings["WorkerPunchClock.Properties.Settings.WorkersConnectionString"].ConnectionString;
+            string pin = StaffPasscodeInputBox.Text;
+            using (SqlConnection myConnection = new SqlConnection(dbConnectionString))
+            using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {pin}", myConnection))
+            {
+                DataTable userPin = new DataTable();
 
+                myConnection.Open();
+                employeePin.Fill(userPin);
+                myConnection.Close();
+                bool correct = false;
+                for (int row = 0; row < userPin.Rows.Count; row++)
+                {
+                    string position = (string)userPin.Rows[row]["Position"];
+                    if (!DBNull.Value.Equals(userPin.Rows[row]["PIN"]))
+                    {
+                        int dpin = (int)userPin.Rows[row]["PIN"];
+                        if (position == "Manager" && pin == dpin.ToString())
+                        {
+                            var ManagerMainMenu = new ManagerMainMenu();
+                            Hide();
+                            ManagerMainMenu.Show();
+                            correct = true;
+                        }
+                        else
+                        {
+                            if (pin == dpin.ToString())
+                            {
+                                var staffMainMenu = new StaffMainMenu();
+                                Hide();
+                                staffMainMenu.Show();
+                                correct = true;
+                            }
+                        }
+
+                    }
+
+                }
+                if (correct == false)
+                {
+                    DialogResult PasscodeError = MessageBox.Show("Please Enter Valid Passcode", "Passcode Incorrect", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (PasscodeError == DialogResult.OK)
+                    {
+                        StaffPasscodeInputBox.Text = "";
+                    }
+                }
+
+            }
+        }
         private void NumPadClick(object sender, EventArgs e)
         {
             try
@@ -44,30 +96,9 @@ namespace WorkerPunchClock
 
         private void EnterButton_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\coleb\Documents\School\Fall2019\SODV2202\WorkerPunchClock\WorkerPunchClock\StaffDataBase.mdf;Integrated Security=True");
-            //SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select ");
-            
-            if (StaffPasscodeInputBox.Text == "1234")
-            {
-                var staffMainMenu = new StaffMainMenu();
-                Hide();
-                staffMainMenu.Show();
-            }
-            else if(StaffPasscodeInputBox.Text == "4321")
-            {
-                var ManagerMainMenu = new ManagerMainMenu();
-                Hide();
-                ManagerMainMenu.Show();
-            }
 
-            else
-            {
-                DialogResult PasscodeError = MessageBox.Show("Please Enter Valid Passcode", "Passcode Incorrect", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (PasscodeError == DialogResult.OK)
-                {
-                    StaffPasscodeInputBox.Text = "";
-                }
-            }
+            getEmployeePinLogin();
+
         }
 
         private void StaffLoginClosing(object sender, FormClosingEventArgs e)
@@ -159,6 +190,8 @@ namespace WorkerPunchClock
 
         private void StaffLogin_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'workersDataSet.Employees' table. You can move, or remove it, as needed.
+            this.employeesTableAdapter.Fill(this.workersDataSet.Employees);
 
         }
     }
