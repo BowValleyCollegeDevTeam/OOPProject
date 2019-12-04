@@ -61,11 +61,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApproveDenyTimeOff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApproveDenyTimeOff.Designer.cs">
+      <DependentUpon>ApproveDenyTimeOff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ApprovePayStubs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApprovePayStubs.Designer.cs">
+      <DependentUpon>ApprovePayStubs.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClockInOut.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ClockInOut.Designer.cs">
       <DependentUpon>ClockInOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateEditEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateEditEmployee.Designer.cs">
+      <DependentUpon>CreateEditEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateEditSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateEditSchedule.Designer.cs">
+      <DependentUpon>CreateEditSchedule.cs</DependentUpon>
     </Compile>
     <Compile Include="ManagerMainMenu.cs">
       <SubType>Form</SubType>
