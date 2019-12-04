@@ -52,6 +52,12 @@ namespace WorkerPunchClock
                 Hide();
                 staffMainMenu.Show();
             }
+            else if(StaffPasscodeInputBox.Text == "4321")
+            {
+                var ManagerMainMenu = new ManagerMainMenu();
+                Hide();
+                ManagerMainMenu.Show();
+            }
 
             else
             {
@@ -148,6 +154,11 @@ namespace WorkerPunchClock
                     }
                 }
             }
+        }
+
+        private void StaffLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
