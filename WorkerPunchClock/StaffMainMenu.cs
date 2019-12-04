@@ -36,7 +36,7 @@ namespace WorkerPunchClock
             this.TimeLabel.Text = dateTime.ToString();
         }
 
-        private void WorkScheduleMouseEnter(object sender, EventArgs e)
+        private void WorkScheduleMouseHover(object sender, EventArgs e)
         {
             WorkScheduleLabel.ForeColor = Color.Red;
         }
@@ -50,7 +50,7 @@ namespace WorkerPunchClock
         {
             new WorkSchedule().Show();
         }
-        private void ClockInOutMouseEnter(object sender, EventArgs e)
+        private void ClockInOutMouseHover(object sender, EventArgs e)
         {
             ClockInOutLabel.ForeColor = Color.Red;
         }
@@ -66,7 +66,7 @@ namespace WorkerPunchClock
 
         }
 
-        private void RequestTimeOffMouseEnter(object sender, EventArgs e)
+        private void RequestTimeOffMouseHover(object sender, EventArgs e)
         {
             RequestTimeOffLabel.ForeColor = Color.Red;
         }
@@ -81,7 +81,7 @@ namespace WorkerPunchClock
             new RequestTimeOff().Show();
         }
 
-        private void PayStubMouseEnter(object sender, EventArgs e)
+        private void PayStubMouseHover(object sender, EventArgs e)
         {
             PayStubLabel.ForeColor = Color.Red;
         }
@@ -95,5 +95,8 @@ namespace WorkerPunchClock
         {
             new PayStub().Show();
         }
+
+
+        
     }
 }
