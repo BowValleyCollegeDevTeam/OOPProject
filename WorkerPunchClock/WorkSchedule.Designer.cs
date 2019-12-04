@@ -28,25 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.WorkScheduleMainMenuButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // WorkScheduleMainMenuButton
-            // 
-            this.WorkScheduleMainMenuButton.Location = new System.Drawing.Point(689, 415);
-            this.WorkScheduleMainMenuButton.Name = "WorkScheduleMainMenuButton";
-            this.WorkScheduleMainMenuButton.Size = new System.Drawing.Size(99, 23);
-            this.WorkScheduleMainMenuButton.TabIndex = 0;
-            this.WorkScheduleMainMenuButton.Text = "Main Menu";
-            this.WorkScheduleMainMenuButton.UseVisualStyleBackColor = true;
-            this.WorkScheduleMainMenuButton.Click += new System.EventHandler(this.WorkScheduleMainMenuButton_Click);
             // 
             // WorkSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.WorkScheduleMainMenuButton);
             this.Name = "WorkSchedule";
             this.Text = "WorkSchedule";
             this.ResumeLayout(false);
@@ -54,7 +42,5 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button WorkScheduleMainMenuButton;
     }
 }

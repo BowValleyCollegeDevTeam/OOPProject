@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.TimeLabel = new System.Windows.Forms.Label();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.StaffNameLabel = new System.Windows.Forms.Label();
             this.NameSplitter = new System.Windows.Forms.Splitter();
-            this.label3 = new System.Windows.Forms.Label();
+            this.PayStubLabel = new System.Windows.Forms.Label();
             this.RequestTimeOffLabel = new System.Windows.Forms.Label();
             this.ClockInOutLabel = new System.Windows.Forms.Label();
             this.WorkScheduleLabel = new System.Windows.Forms.Label();
@@ -49,6 +50,7 @@
             this.ClockInOutPictureBox = new System.Windows.Forms.PictureBox();
             this.WorkSchedulePictureBox = new System.Windows.Forms.PictureBox();
             this.ApproveDenyTimeOffLabel = new System.Windows.Forms.Label();
+            this.ManagerPageTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ApproveDenyTimeOffPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ApprovePayStubsPictureBox)).BeginInit();
@@ -115,15 +117,17 @@
             this.NameSplitter.TabIndex = 0;
             this.NameSplitter.TabStop = false;
             // 
-            // label3
+            // PayStubLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(669, 212);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 16);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Pay Stub";
+            this.PayStubLabel.AutoSize = true;
+            this.PayStubLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PayStubLabel.Location = new System.Drawing.Point(669, 212);
+            this.PayStubLabel.Name = "PayStubLabel";
+            this.PayStubLabel.Size = new System.Drawing.Size(70, 16);
+            this.PayStubLabel.TabIndex = 16;
+            this.PayStubLabel.Text = "Pay Stub";
+            this.PayStubLabel.MouseLeave += new System.EventHandler(this.PayStubMouseLeave);
+            this.PayStubLabel.MouseHover += new System.EventHandler(this.PayStubMouseHover);
             // 
             // RequestTimeOffLabel
             // 
@@ -134,6 +138,8 @@
             this.RequestTimeOffLabel.Size = new System.Drawing.Size(128, 16);
             this.RequestTimeOffLabel.TabIndex = 14;
             this.RequestTimeOffLabel.Text = "Request Time Off";
+            this.RequestTimeOffLabel.MouseLeave += new System.EventHandler(this.RequestTimeOffMouseLeave);
+            this.RequestTimeOffLabel.MouseHover += new System.EventHandler(this.RequestTimeOffMouseHover);
             // 
             // ClockInOutLabel
             // 
@@ -144,6 +150,8 @@
             this.ClockInOutLabel.Size = new System.Drawing.Size(91, 16);
             this.ClockInOutLabel.TabIndex = 12;
             this.ClockInOutLabel.Text = "Clock In/Out";
+            this.ClockInOutLabel.MouseLeave += new System.EventHandler(this.ClockInOutMouseLeave);
+            this.ClockInOutLabel.MouseHover += new System.EventHandler(this.ClockInOutMouseHover);
             // 
             // WorkScheduleLabel
             // 
@@ -154,6 +162,8 @@
             this.WorkScheduleLabel.Size = new System.Drawing.Size(113, 16);
             this.WorkScheduleLabel.TabIndex = 10;
             this.WorkScheduleLabel.Text = "Work Schedule";
+            this.WorkScheduleLabel.MouseLeave += new System.EventHandler(this.WorkScheduleMouseLeave);
+            this.WorkScheduleLabel.MouseHover += new System.EventHandler(this.WorkScheduleMouseHover);
             // 
             // CreateEditScheduleLabel
             // 
@@ -164,6 +174,8 @@
             this.CreateEditScheduleLabel.Size = new System.Drawing.Size(155, 16);
             this.CreateEditScheduleLabel.TabIndex = 20;
             this.CreateEditScheduleLabel.Text = "Create/Edit Schedule";
+            this.CreateEditScheduleLabel.MouseLeave += new System.EventHandler(this.CreateEditScheduleMouseLeave);
+            this.CreateEditScheduleLabel.MouseHover += new System.EventHandler(this.CreateEditScheduleMouseHover);
             // 
             // CreateEditEmployeeLabel
             // 
@@ -174,6 +186,8 @@
             this.CreateEditEmployeeLabel.Size = new System.Drawing.Size(160, 16);
             this.CreateEditEmployeeLabel.TabIndex = 21;
             this.CreateEditEmployeeLabel.Text = "Create/Edit Employee";
+            this.CreateEditEmployeeLabel.MouseLeave += new System.EventHandler(this.CreateEditEmployeeMouseLeave);
+            this.CreateEditEmployeeLabel.MouseHover += new System.EventHandler(this.CreateEditEmployeeMouseHover);
             // 
             // ApprovePayStubsLabel
             // 
@@ -184,6 +198,8 @@
             this.ApprovePayStubsLabel.Size = new System.Drawing.Size(137, 16);
             this.ApprovePayStubsLabel.TabIndex = 22;
             this.ApprovePayStubsLabel.Text = "Approve PayStubs";
+            this.ApprovePayStubsLabel.MouseLeave += new System.EventHandler(this.ApprovePayStubsMouseLeave);
+            this.ApprovePayStubsLabel.MouseHover += new System.EventHandler(this.ApprovePayStubsMouseHover);
             // 
             // ApproveDenyTimeOffPictureBox
             // 
@@ -194,6 +210,9 @@
             this.ApproveDenyTimeOffPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ApproveDenyTimeOffPictureBox.TabIndex = 23;
             this.ApproveDenyTimeOffPictureBox.TabStop = false;
+            this.ApproveDenyTimeOffPictureBox.Click += new System.EventHandler(this.ApproveDenyTimeOffPictureBox_Click);
+            this.ApproveDenyTimeOffPictureBox.MouseLeave += new System.EventHandler(this.ApproveDenyTimeOffMouseLeave);
+            this.ApproveDenyTimeOffPictureBox.MouseHover += new System.EventHandler(this.ApproveDenyTimeOffMouseHover);
             // 
             // ApprovePayStubsPictureBox
             // 
@@ -204,6 +223,9 @@
             this.ApprovePayStubsPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ApprovePayStubsPictureBox.TabIndex = 19;
             this.ApprovePayStubsPictureBox.TabStop = false;
+            this.ApprovePayStubsPictureBox.Click += new System.EventHandler(this.ApprovePayStubsPictureBox_Click);
+            this.ApprovePayStubsPictureBox.MouseLeave += new System.EventHandler(this.ApprovePayStubsMouseLeave);
+            this.ApprovePayStubsPictureBox.MouseHover += new System.EventHandler(this.ApprovePayStubsMouseHover);
             // 
             // CreateEditEmployeePictureBox
             // 
@@ -214,6 +236,9 @@
             this.CreateEditEmployeePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.CreateEditEmployeePictureBox.TabIndex = 18;
             this.CreateEditEmployeePictureBox.TabStop = false;
+            this.CreateEditEmployeePictureBox.Click += new System.EventHandler(this.CreateEditEmployeePictureBox_Click);
+            this.CreateEditEmployeePictureBox.MouseLeave += new System.EventHandler(this.CreateEditEmployeeMouseLeave);
+            this.CreateEditEmployeePictureBox.MouseHover += new System.EventHandler(this.CreateEditEmployeeMouseHover);
             // 
             // CreateEditSchedulePictureBox
             // 
@@ -224,6 +249,9 @@
             this.CreateEditSchedulePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.CreateEditSchedulePictureBox.TabIndex = 17;
             this.CreateEditSchedulePictureBox.TabStop = false;
+            this.CreateEditSchedulePictureBox.Click += new System.EventHandler(this.CreateEditSchedulePictureBox_Click);
+            this.CreateEditSchedulePictureBox.MouseLeave += new System.EventHandler(this.CreateEditScheduleMouseLeave);
+            this.CreateEditSchedulePictureBox.MouseHover += new System.EventHandler(this.CreateEditScheduleMouseHover);
             // 
             // PayStubPictureBox
             // 
@@ -234,6 +262,9 @@
             this.PayStubPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PayStubPictureBox.TabIndex = 15;
             this.PayStubPictureBox.TabStop = false;
+            this.PayStubPictureBox.Click += new System.EventHandler(this.PayStubPictureBox_Click);
+            this.PayStubPictureBox.MouseLeave += new System.EventHandler(this.PayStubMouseLeave);
+            this.PayStubPictureBox.MouseHover += new System.EventHandler(this.PayStubMouseHover);
             // 
             // RequestTimeOffPictureBox
             // 
@@ -244,6 +275,9 @@
             this.RequestTimeOffPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.RequestTimeOffPictureBox.TabIndex = 13;
             this.RequestTimeOffPictureBox.TabStop = false;
+            this.RequestTimeOffPictureBox.Click += new System.EventHandler(this.RequestTimeOffPictureBox_Click);
+            this.RequestTimeOffPictureBox.MouseLeave += new System.EventHandler(this.RequestTimeOffMouseLeave);
+            this.RequestTimeOffPictureBox.MouseHover += new System.EventHandler(this.RequestTimeOffMouseHover);
             // 
             // ClockInOutPictureBox
             // 
@@ -254,6 +288,9 @@
             this.ClockInOutPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ClockInOutPictureBox.TabIndex = 11;
             this.ClockInOutPictureBox.TabStop = false;
+            this.ClockInOutPictureBox.Click += new System.EventHandler(this.ClockInOutPictureBox_Click);
+            this.ClockInOutPictureBox.MouseLeave += new System.EventHandler(this.ClockInOutMouseLeave);
+            this.ClockInOutPictureBox.MouseHover += new System.EventHandler(this.ClockInOutMouseHover);
             // 
             // WorkSchedulePictureBox
             // 
@@ -264,6 +301,9 @@
             this.WorkSchedulePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.WorkSchedulePictureBox.TabIndex = 9;
             this.WorkSchedulePictureBox.TabStop = false;
+            this.WorkSchedulePictureBox.Click += new System.EventHandler(this.WorkSchedulePictureBox_Click);
+            this.WorkSchedulePictureBox.MouseLeave += new System.EventHandler(this.WorkScheduleMouseLeave);
+            this.WorkSchedulePictureBox.MouseHover += new System.EventHandler(this.WorkScheduleMouseHover);
             // 
             // ApproveDenyTimeOffLabel
             // 
@@ -274,6 +314,12 @@
             this.ApproveDenyTimeOffLabel.Size = new System.Drawing.Size(170, 16);
             this.ApproveDenyTimeOffLabel.TabIndex = 24;
             this.ApproveDenyTimeOffLabel.Text = "Approve/Deny Time Off";
+            this.ApproveDenyTimeOffLabel.MouseLeave += new System.EventHandler(this.ApproveDenyTimeOffMouseLeave);
+            this.ApproveDenyTimeOffLabel.MouseHover += new System.EventHandler(this.ApproveDenyTimeOffMouseHover);
+            // 
+            // ManagerPageTimer
+            // 
+            this.ManagerPageTimer.Tick += new System.EventHandler(this.ManagerPageTimer_Tick);
             // 
             // ManagerMainMenu
             // 
@@ -288,7 +334,7 @@
             this.Controls.Add(this.ApprovePayStubsPictureBox);
             this.Controls.Add(this.CreateEditEmployeePictureBox);
             this.Controls.Add(this.CreateEditSchedulePictureBox);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.PayStubLabel);
             this.Controls.Add(this.PayStubPictureBox);
             this.Controls.Add(this.RequestTimeOffLabel);
             this.Controls.Add(this.RequestTimeOffPictureBox);
@@ -299,6 +345,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "ManagerMainMenu";
             this.Text = "Manager Main Menu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManagerMainMenuClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ApproveDenyTimeOffPictureBox)).EndInit();
@@ -321,7 +368,7 @@
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Label StaffNameLabel;
         private System.Windows.Forms.Splitter NameSplitter;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label PayStubLabel;
         private System.Windows.Forms.PictureBox PayStubPictureBox;
         private System.Windows.Forms.Label RequestTimeOffLabel;
         private System.Windows.Forms.PictureBox RequestTimeOffPictureBox;
@@ -337,5 +384,6 @@
         private System.Windows.Forms.Label ApprovePayStubsLabel;
         private System.Windows.Forms.PictureBox ApproveDenyTimeOffPictureBox;
         private System.Windows.Forms.Label ApproveDenyTimeOffLabel;
+        private System.Windows.Forms.Timer ManagerPageTimer;
     }
 }

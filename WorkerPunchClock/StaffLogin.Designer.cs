@@ -233,6 +233,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Staff Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StaffLoginClosing);
+            this.Load += new System.EventHandler(this.StaffLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

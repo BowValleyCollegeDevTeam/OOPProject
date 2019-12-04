@@ -114,8 +114,8 @@
             this.WorkScheduleLabel.Size = new System.Drawing.Size(130, 20);
             this.WorkScheduleLabel.TabIndex = 2;
             this.WorkScheduleLabel.Text = "Work Schedule";
-            this.WorkScheduleLabel.MouseEnter += new System.EventHandler(this.WorkScheduleMouseEnter);
             this.WorkScheduleLabel.MouseLeave += new System.EventHandler(this.WorkScheduleMouseLeave);
+            this.WorkScheduleLabel.MouseHover += new System.EventHandler(this.WorkScheduleMouseHover);
             // 
             // TimeTimerTicker
             // 
@@ -130,6 +130,8 @@
             this.ClockInOutLabel.Size = new System.Drawing.Size(108, 20);
             this.ClockInOutLabel.TabIndex = 4;
             this.ClockInOutLabel.Text = "Clock In/Out";
+            this.ClockInOutLabel.MouseLeave += new System.EventHandler(this.ClockInOutMouseLeave);
+            this.ClockInOutLabel.MouseHover += new System.EventHandler(this.ClockInOutMouseHover);
             // 
             // RequestTimeOffLabel
             // 
@@ -140,6 +142,8 @@
             this.RequestTimeOffLabel.Size = new System.Drawing.Size(150, 20);
             this.RequestTimeOffLabel.TabIndex = 6;
             this.RequestTimeOffLabel.Text = "Request Time Off";
+            this.RequestTimeOffLabel.MouseLeave += new System.EventHandler(this.RequestTimeOffMouseLeave);
+            this.RequestTimeOffLabel.MouseHover += new System.EventHandler(this.RequestTimeOffMouseHover);
             // 
             // PayStubLabel
             // 
@@ -150,6 +154,8 @@
             this.PayStubLabel.Size = new System.Drawing.Size(81, 20);
             this.PayStubLabel.TabIndex = 8;
             this.PayStubLabel.Text = "Pay Stub";
+            this.PayStubLabel.MouseLeave += new System.EventHandler(this.PayStubMouseLeave);
+            this.PayStubLabel.MouseHover += new System.EventHandler(this.PayStubMouseHover);
             // 
             // PayStubPictureBox
             // 
@@ -161,6 +167,8 @@
             this.PayStubPictureBox.TabIndex = 7;
             this.PayStubPictureBox.TabStop = false;
             this.PayStubPictureBox.Click += new System.EventHandler(this.PayStubPictureBox_Click);
+            this.PayStubPictureBox.MouseLeave += new System.EventHandler(this.PayStubMouseLeave);
+            this.PayStubPictureBox.MouseHover += new System.EventHandler(this.PayStubMouseHover);
             // 
             // RequestTimeOffPictureBox
             // 
@@ -172,6 +180,8 @@
             this.RequestTimeOffPictureBox.TabIndex = 5;
             this.RequestTimeOffPictureBox.TabStop = false;
             this.RequestTimeOffPictureBox.Click += new System.EventHandler(this.RequestTimeOffPictureBox_Click);
+            this.RequestTimeOffPictureBox.MouseLeave += new System.EventHandler(this.RequestTimeOffMouseLeave);
+            this.RequestTimeOffPictureBox.MouseHover += new System.EventHandler(this.RequestTimeOffMouseHover);
             // 
             // ClockInOutPictureBox
             // 
@@ -183,6 +193,8 @@
             this.ClockInOutPictureBox.TabIndex = 3;
             this.ClockInOutPictureBox.TabStop = false;
             this.ClockInOutPictureBox.Click += new System.EventHandler(this.ClockInOutPictureBox_Click);
+            this.ClockInOutPictureBox.MouseLeave += new System.EventHandler(this.ClockInOutMouseLeave);
+            this.ClockInOutPictureBox.MouseHover += new System.EventHandler(this.ClockInOutMouseHover);
             // 
             // WorkSchedulePictureBox
             // 
@@ -194,8 +206,8 @@
             this.WorkSchedulePictureBox.TabIndex = 0;
             this.WorkSchedulePictureBox.TabStop = false;
             this.WorkSchedulePictureBox.Click += new System.EventHandler(this.WorkSchedulePictureBox_Click);
-            this.WorkSchedulePictureBox.MouseEnter += new System.EventHandler(this.WorkScheduleMouseEnter);
             this.WorkSchedulePictureBox.MouseLeave += new System.EventHandler(this.WorkScheduleMouseLeave);
+            this.WorkSchedulePictureBox.MouseHover += new System.EventHandler(this.WorkScheduleMouseHover);
             // 
             // StaffMainMenu
             // 
