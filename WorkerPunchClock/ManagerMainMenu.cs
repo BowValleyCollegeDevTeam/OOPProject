@@ -18,7 +18,7 @@ namespace WorkerPunchClock
         public ManagerMainMenu()
         {
             InitializeComponent();
-            ManagerPageTimer.Start();
+        
         }
 
         private void ManagerMainMenuClosing(object sender, FormClosingEventArgs e)
@@ -31,7 +31,7 @@ namespace WorkerPunchClock
         private void ManagerPageTimer_Tick(object sender, EventArgs e)
         {
             DateTime dateTime = DateTime.Now;
-            this.TimeLabel.Text = dateTime.ToString();
+          
         }
 
         private void WorkSchedulePictureBox_Click(object sender, EventArgs e)
@@ -170,7 +170,7 @@ namespace WorkerPunchClock
             using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {login.pin}", myConnection))
             {
                 DataTable userPin = new DataTable();
-                
+
                 myConnection.Open();
                 employeePin.Fill(userPin);
                 myConnection.Close();
@@ -178,8 +178,11 @@ namespace WorkerPunchClock
                 {
                     string FirstName = (string)userPin.Rows[row]["FName"];
                     string LastName = (string)userPin.Rows[row]["LName"];
-                    StaffNameLabel.Text = "Name: " + FirstName + " " + LastName;
+                    this.topInfoBar1.StaffNameLabel.Text = "Name: " + FirstName + " " + LastName;
+
                 }
+
+
 
             }
 
