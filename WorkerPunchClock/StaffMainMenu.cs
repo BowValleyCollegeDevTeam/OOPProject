@@ -18,7 +18,7 @@ namespace WorkerPunchClock
         public StaffMainMenu()
         {
             InitializeComponent();
-            TimeTimerTicker.Start();
+            
         }
 
         private void StaffMainMenuClosing(object sender, FormClosingEventArgs e)
@@ -44,19 +44,14 @@ namespace WorkerPunchClock
                 {
                     string FirstName = (string)userPin.Rows[row]["FName"];
                     string LastName = (string)userPin.Rows[row]["LName"];
-                    StaffNameLabel.Text = "Name: " + FirstName + " " + LastName;
-                }
+                   }
 
 
 
             }
         }
 
-        private void TimeTimerTicker_Tick(object sender, EventArgs e)
-        {
-            DateTime dateTime = DateTime.Now;
-            this.TimeLabel.Text = dateTime.ToString();
-        }
+      
 
         private void WorkScheduleMouseHover(object sender, EventArgs e)
         {

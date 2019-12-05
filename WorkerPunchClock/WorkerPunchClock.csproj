@@ -125,6 +125,12 @@
     <Compile Include="StaffMainMenu.Designer.cs">
       <DependentUpon>StaffMainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="TopInfoBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TopInfoBar.Designer.cs">
+      <DependentUpon>TopInfoBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="WorkersDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -163,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StaffMainMenu.resx">
       <DependentUpon>StaffMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TopInfoBar.resx">
+      <DependentUpon>TopInfoBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkSchedule.resx">
       <DependentUpon>WorkSchedule.cs</DependentUpon>
