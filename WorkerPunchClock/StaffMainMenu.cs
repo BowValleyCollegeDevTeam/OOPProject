@@ -19,6 +19,7 @@ namespace WorkerPunchClock
         {
             InitializeComponent();
             
+            
         }
 
         private void StaffMainMenuClosing(object sender, FormClosingEventArgs e)
@@ -44,7 +45,9 @@ namespace WorkerPunchClock
                 {
                     string FirstName = (string)userPin.Rows[row]["FName"];
                     string LastName = (string)userPin.Rows[row]["LName"];
-                   }
+                    this.topInfoBar1.StaffNameLabel.Text = "Name: " + FirstName + " " + LastName;
+                    
+                }
 
 
 
