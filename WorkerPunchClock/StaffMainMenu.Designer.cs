@@ -43,11 +43,16 @@
             this.RequestTimeOffPictureBox = new System.Windows.Forms.PictureBox();
             this.ClockInOutPictureBox = new System.Windows.Forms.PictureBox();
             this.WorkSchedulePictureBox = new System.Windows.Forms.PictureBox();
+            this.EmployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.workersDataSet = new WorkerPunchClock.WorkersDataSet();
+            this.employeesTableAdapter = new WorkerPunchClock.WorkersDataSetTableAdapters.EmployeesTableAdapter();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PayStubPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RequestTimeOffPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockInOutPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WorkSchedulePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workersDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -209,6 +214,20 @@
             this.WorkSchedulePictureBox.MouseLeave += new System.EventHandler(this.WorkScheduleMouseLeave);
             this.WorkSchedulePictureBox.MouseHover += new System.EventHandler(this.WorkScheduleMouseHover);
             // 
+            // EmployeeBindingSource
+            // 
+            this.EmployeeBindingSource.DataMember = "Employees";
+            this.EmployeeBindingSource.DataSource = this.workersDataSet;
+            // 
+            // workersDataSet
+            // 
+            this.workersDataSet.DataSetName = "WorkersDataSet";
+            this.workersDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeesTableAdapter
+            // 
+            this.employeesTableAdapter.ClearBeforeFill = true;
+            // 
             // StaffMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,6 +253,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.RequestTimeOffPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockInOutPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WorkSchedulePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workersDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,5 +276,8 @@
         private System.Windows.Forms.Label RequestTimeOffLabel;
         private System.Windows.Forms.PictureBox PayStubPictureBox;
         private System.Windows.Forms.Label PayStubLabel;
+        private System.Windows.Forms.BindingSource EmployeeBindingSource;
+        private WorkersDataSet workersDataSet;
+        private WorkersDataSetTableAdapters.EmployeesTableAdapter employeesTableAdapter;
     }
 }

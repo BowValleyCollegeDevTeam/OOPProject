@@ -51,6 +51,9 @@
             this.WorkSchedulePictureBox = new System.Windows.Forms.PictureBox();
             this.ApproveDenyTimeOffLabel = new System.Windows.Forms.Label();
             this.ManagerPageTimer = new System.Windows.Forms.Timer(this.components);
+            this.EmployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.workersDataSet = new WorkerPunchClock.WorkersDataSet();
+            this.employeesTableAdapter = new WorkerPunchClock.WorkersDataSetTableAdapters.EmployeesTableAdapter();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ApproveDenyTimeOffPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ApprovePayStubsPictureBox)).BeginInit();
@@ -60,6 +63,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.RequestTimeOffPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockInOutPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WorkSchedulePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workersDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -321,6 +326,20 @@
             // 
             this.ManagerPageTimer.Tick += new System.EventHandler(this.ManagerPageTimer_Tick);
             // 
+            // EmployeeBindingSource
+            // 
+            this.EmployeeBindingSource.DataMember = "Employees";
+            this.EmployeeBindingSource.DataSource = this.workersDataSet;
+            // 
+            // workersDataSet
+            // 
+            this.workersDataSet.DataSetName = "WorkersDataSet";
+            this.workersDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeesTableAdapter
+            // 
+            this.employeesTableAdapter.ClearBeforeFill = true;
+            // 
             // ManagerMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -346,6 +365,7 @@
             this.Name = "ManagerMainMenu";
             this.Text = "Manager Main Menu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManagerMainMenuClosing);
+            this.Load += new System.EventHandler(this.ManagerMainMenu_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ApproveDenyTimeOffPictureBox)).EndInit();
@@ -356,6 +376,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.RequestTimeOffPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockInOutPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WorkSchedulePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workersDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,5 +407,8 @@
         private System.Windows.Forms.PictureBox ApproveDenyTimeOffPictureBox;
         private System.Windows.Forms.Label ApproveDenyTimeOffLabel;
         private System.Windows.Forms.Timer ManagerPageTimer;
+        private System.Windows.Forms.BindingSource EmployeeBindingSource;
+        private WorkersDataSet workersDataSet;
+        private WorkersDataSetTableAdapters.EmployeesTableAdapter employeesTableAdapter;
     }
 }

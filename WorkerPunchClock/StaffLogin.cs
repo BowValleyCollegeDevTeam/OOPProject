@@ -16,16 +16,22 @@ namespace WorkerPunchClock
     public partial class StaffLogin : Form
     {
         private string dbConnectionString;
+        public static int dpin;
         public StaffLogin()
         {
             InitializeComponent();
         }
+
+        public string pin
+        {
+            get { return dpin.ToString(); }
+        }
         public void getEmployeePinLogin()
         {
+            string userInput = StaffPasscodeInputBox.Text;
             dbConnectionString = ConfigurationManager.ConnectionStrings["WorkerPunchClock.Properties.Settings.WorkersConnectionString"].ConnectionString;
-            string pin = StaffPasscodeInputBox.Text;
             using (SqlConnection myConnection = new SqlConnection(dbConnectionString))
-            using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {pin}", myConnection))
+            using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {userInput}", myConnection))
             {
                 DataTable userPin = new DataTable();
 
@@ -38,17 +44,17 @@ namespace WorkerPunchClock
                     string position = (string)userPin.Rows[row]["Position"];
                     if (!DBNull.Value.Equals(userPin.Rows[row]["PIN"]))
                     {
-                        int dpin = (int)userPin.Rows[row]["PIN"];
-                        if (position == "Manager" && pin == dpin.ToString())
+                        dpin = (int)userPin.Rows[row]["PIN"];
+                        if (position == "Manager" && userInput == dpin.ToString())
                         {
                             var ManagerMainMenu = new ManagerMainMenu();
-                            Hide();
+                            //Hide();
                             ManagerMainMenu.Show();
                             correct = true;
                         }
                         else
                         {
-                            if (pin == dpin.ToString())
+                            if (userInput == dpin.ToString())
                             {
                                 var staffMainMenu = new StaffMainMenu();
                                 Hide();
@@ -98,7 +104,7 @@ namespace WorkerPunchClock
         {
 
             getEmployeePinLogin();
-
+            
         }
 
         private void StaffLoginClosing(object sender, FormClosingEventArgs e)
@@ -168,24 +174,24 @@ namespace WorkerPunchClock
                 catch { }
             }
 
-            else if (e.KeyCode == Keys.Enter)
-            {
-                if (StaffPasscodeInputBox.Text == "1234")
-                {
-                    var staffMainMenu = new StaffMainMenu();
-                    Hide();
-                    staffMainMenu.Show();
-                }
+            //else if (e.KeyCode == Keys.Enter)
+            //{
+            //    if (StaffPasscodeInputBox.Text == "1234")
+            //    {
+            //        var staffMainMenu = new StaffMainMenu();
+            //        Hide();
+            //        staffMainMenu.Show();
+            //    }
 
-                else
-                {
-                    DialogResult PasscodeError = MessageBox.Show("Please Enter Valid Passcode", "Passcode Incorrect", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    if (PasscodeError == DialogResult.OK)
-                    {
-                        StaffPasscodeInputBox.Text = "";
-                    }
-                }
-            }
+            //    else
+            //    {
+            //        DialogResult PasscodeError = MessageBox.Show("Please Enter Valid Passcode", "Passcode Incorrect", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        if (PasscodeError == DialogResult.OK)
+            //        {
+            //            StaffPasscodeInputBox.Text = "";
+            //        }
+            //    }
+            //}
         }
 
         private void StaffLogin_Load(object sender, EventArgs e)
