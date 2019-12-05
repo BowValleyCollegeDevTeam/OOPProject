@@ -56,7 +56,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(678, 34);
             this.panel1.TabIndex = 2;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
             // 
             // TimeLabel
             // 
@@ -124,6 +123,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "TopInfoBar";
             this.Size = new System.Drawing.Size(678, 35);
+            this.Load += new System.EventHandler(this.TopInfoBar_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).EndInit();
@@ -133,15 +133,14 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label TimeLabel;
         private System.Windows.Forms.Splitter splitter1;
-        private System.Windows.Forms.Label StaffNameLabel;
         private System.Windows.Forms.Splitter NameSplitter;
         private System.Windows.Forms.Timer TimeTimerTicker;
         private System.Windows.Forms.BindingSource EmployeeBindingSource;
         private WorkersDataSet workersDataSet;
         private WorkersDataSetTableAdapters.EmployeesTableAdapter employeesTableAdapter;
+        public System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Label StaffNameLabel;
     }
 }
