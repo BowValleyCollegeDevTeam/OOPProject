@@ -15,7 +15,6 @@ namespace WorkerPunchClock
         public StaffMainMenu()
         {
             InitializeComponent();
-            TimeTimerTicker.Start();
         }
 
         private void StaffMainMenuClosing(object sender, FormClosingEventArgs e)
@@ -33,7 +32,6 @@ namespace WorkerPunchClock
         private void TimeTimerTicker_Tick(object sender, EventArgs e)
         {
             DateTime dateTime = DateTime.Now;
-            this.TimeLabel.Text = dateTime.ToString();
         }
 
         private void WorkScheduleMouseHover(object sender, EventArgs e)

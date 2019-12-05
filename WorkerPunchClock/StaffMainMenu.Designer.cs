@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.WorkScheduleLabel = new System.Windows.Forms.Label();
-            this.TimeTimerTicker = new System.Windows.Forms.Timer(this.components);
             this.ClockInOutLabel = new System.Windows.Forms.Label();
             this.RequestTimeOffLabel = new System.Windows.Forms.Label();
             this.PayStubLabel = new System.Windows.Forms.Label();
@@ -55,10 +53,6 @@
             this.WorkScheduleLabel.Text = "Work Schedule";
             this.WorkScheduleLabel.MouseLeave += new System.EventHandler(this.WorkScheduleMouseLeave);
             this.WorkScheduleLabel.MouseHover += new System.EventHandler(this.WorkScheduleMouseHover);
-            // 
-            // TimeTimerTicker
-            // 
-            this.TimeTimerTicker.Tick += new System.EventHandler(this.TimeTimerTicker_Tick);
             // 
             // ClockInOutLabel
             // 
@@ -179,7 +173,6 @@
 
         private System.Windows.Forms.PictureBox WorkSchedulePictureBox;
         private System.Windows.Forms.Label WorkScheduleLabel;
-        private System.Windows.Forms.Timer TimeTimerTicker;
         private System.Windows.Forms.PictureBox ClockInOutPictureBox;
         private System.Windows.Forms.Label ClockInOutLabel;
         private System.Windows.Forms.PictureBox RequestTimeOffPictureBox;
