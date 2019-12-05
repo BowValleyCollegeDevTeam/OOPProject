@@ -181,8 +181,6 @@ namespace WorkerPunchClock
                     StaffNameLabel.Text = "Name: " + FirstName + " " + LastName;
                 }
 
-               
-
             }
 
         }

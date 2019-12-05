@@ -301,6 +301,8 @@ namespace WorkerPunchClock {
             
             private global::System.Data.DataColumn columnFName;
             
+            private global::System.Data.DataColumn columnWage;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public EmployeesDataTable() {
@@ -424,6 +426,14 @@ namespace WorkerPunchClock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn WageColumn {
+                get {
+                    return this.columnWage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -459,7 +469,7 @@ namespace WorkerPunchClock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public EmployeesRow AddEmployeesRow(int PIN, string LName, System.DateTime DOB, string Address, string City, string Province, System.DateTime Start_Date, System.DateTime End_Date, string Position, string FName) {
+            public EmployeesRow AddEmployeesRow(int PIN, string LName, System.DateTime DOB, string Address, string City, string Province, System.DateTime Start_Date, System.DateTime End_Date, string Position, string FName, decimal Wage) {
                 EmployeesRow rowEmployeesRow = ((EmployeesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -472,7 +482,8 @@ namespace WorkerPunchClock {
                         Start_Date,
                         End_Date,
                         Position,
-                        FName};
+                        FName,
+                        Wage};
                 rowEmployeesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEmployeesRow);
                 return rowEmployeesRow;
@@ -513,6 +524,7 @@ namespace WorkerPunchClock {
                 this.columnEnd_Date = base.Columns["End Date"];
                 this.columnPosition = base.Columns["Position"];
                 this.columnFName = base.Columns["FName"];
+                this.columnWage = base.Columns["Wage"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -540,6 +552,8 @@ namespace WorkerPunchClock {
                 base.Columns.Add(this.columnPosition);
                 this.columnFName = new global::System.Data.DataColumn("FName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFName);
+                this.columnWage = new global::System.Data.DataColumn("Wage", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWage);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnEmployeeId}, true));
                 this.columnEmployeeId.AutoIncrement = true;
@@ -563,6 +577,7 @@ namespace WorkerPunchClock {
                 this.columnPosition.MaxLength = 50;
                 this.columnFName.AllowDBNull = false;
                 this.columnFName.MaxLength = 50;
+                this.columnWage.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -831,6 +846,17 @@ namespace WorkerPunchClock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal Wage {
+                get {
+                    return ((decimal)(this[this.tableEmployees.WageColumn]));
+                }
+                set {
+                    this[this.tableEmployees.WageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsEnd_DateNull() {
                 return this.IsNull(this.tableEmployees.End_DateColumn);
             }
@@ -1012,10 +1038,11 @@ namespace WorkerPunchClock.WorkersDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("End Date", "End Date");
             tableMapping.ColumnMappings.Add("Position", "Position");
             tableMapping.ColumnMappings.Add("FName", "FName");
+            tableMapping.ColumnMappings.Add("Wage", "Wage");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Employees] WHERE (([EmployeeId] = @Original_EmployeeId) AND ([PIN] = @Original_PIN) AND ([FName] = @Original_FName) AND ([LName] = @Original_LName) AND ([DOB] = @Original_DOB) AND ([Address] = @Original_Address) AND ([City] = @Original_City) AND ([Province] = @Original_Province) AND ([Start Date] = @Original_Start_Date) AND ((@IsNull_End_Date = 1 AND [End Date] IS NULL) OR ([End Date] = @Original_End_Date)) AND ([Position] = @Original_Position))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Employees] WHERE (([EmployeeId] = @Original_EmployeeId) AND ([PIN] = @Original_PIN) AND ([FName] = @Original_FName) AND ([LName] = @Original_LName) AND ([DOB] = @Original_DOB) AND ([Address] = @Original_Address) AND ([City] = @Original_City) AND ([Province] = @Original_Province) AND ([Start Date] = @Original_Start_Date) AND ((@IsNull_End_Date = 1 AND [End Date] IS NULL) OR ([End Date] = @Original_End_Date)) AND ([Position] = @Original_Position) AND ([Wage] = @Original_Wage))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmployeeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PIN", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PIN", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -1029,6 +1056,7 @@ namespace WorkerPunchClock.WorkersDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_End_Date", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "End Date", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_End_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "End Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Position", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Position", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Wage", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Wage", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO [Employees] ([PIN], [FName], [LName], [DOB], [Address], [City], [Province], [Start Date], [End Date], [Position]) VALUES (@PIN, @FName, @LName, @DOB, @Address, @City, @Province, @Start_Date, @End_Date, @Position);
@@ -1046,8 +1074,8 @@ SELECT EmployeeId, PIN, FName, LName, DOB, Address, City, Province, [Start Date]
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Position", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Position", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [Employees] SET [PIN] = @PIN, [FName] = @FName, [LName] = @LName, [DOB] = @DOB, [Address] = @Address, [City] = @City, [Province] = @Province, [Start Date] = @Start_Date, [End Date] = @End_Date, [Position] = @Position WHERE (([EmployeeId] = @Original_EmployeeId) AND ([PIN] = @Original_PIN) AND ([FName] = @Original_FName) AND ([LName] = @Original_LName) AND ([DOB] = @Original_DOB) AND ([Address] = @Original_Address) AND ([City] = @Original_City) AND ([Province] = @Original_Province) AND ([Start Date] = @Original_Start_Date) AND ((@IsNull_End_Date = 1 AND [End Date] IS NULL) OR ([End Date] = @Original_End_Date)) AND ([Position] = @Original_Position));
-SELECT EmployeeId, PIN, FName, LName, DOB, Address, City, Province, [Start Date], [End Date], Position FROM Employees WHERE (EmployeeId = @EmployeeId)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Employees] SET [PIN] = @PIN, [FName] = @FName, [LName] = @LName, [DOB] = @DOB, [Address] = @Address, [City] = @City, [Province] = @Province, [Start Date] = @Start_Date, [End Date] = @End_Date, [Position] = @Position, [Wage] = @Wage WHERE (([EmployeeId] = @Original_EmployeeId) AND ([PIN] = @Original_PIN) AND ([FName] = @Original_FName) AND ([LName] = @Original_LName) AND ([DOB] = @Original_DOB) AND ([Address] = @Original_Address) AND ([City] = @Original_City) AND ([Province] = @Original_Province) AND ([Start Date] = @Original_Start_Date) AND ((@IsNull_End_Date = 1 AND [End Date] IS NULL) OR ([End Date] = @Original_End_Date)) AND ([Position] = @Original_Position) AND ([Wage] = @Original_Wage));
+SELECT EmployeeId, PIN, FName, LName, DOB, Address, City, Province, [Start Date], [End Date], Position, Wage FROM Employees WHERE (EmployeeId = @EmployeeId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PIN", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PIN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1059,6 +1087,7 @@ SELECT EmployeeId, PIN, FName, LName, DOB, Address, City, Province, [Start Date]
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Start_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Start Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@End_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "End Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Position", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Position", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Wage", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Wage", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmployeeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PIN", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PIN", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -1071,6 +1100,7 @@ SELECT EmployeeId, PIN, FName, LName, DOB, Address, City, Province, [Start Date]
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_End_Date", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "End Date", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_End_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "End Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Position", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Position", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Wage", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Wage", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -1088,7 +1118,7 @@ SELECT EmployeeId, PIN, FName, LName, DOB, Address, City, Province, [Start Date]
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        EmployeeId, PIN, FName, LName, DOB, Address, City, Province, [Start" +
-                " Date], [End Date], Position\r\nFROM            Employees";
+                " Date], [End Date], Position, Wage\r\nFROM            Employees";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1149,7 +1179,7 @@ SELECT EmployeeId, PIN, FName, LName, DOB, Address, City, Province, [Start Date]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_EmployeeId, int Original_PIN, string Original_FName, string Original_LName, System.DateTime Original_DOB, string Original_Address, string Original_City, string Original_Province, System.DateTime Original_Start_Date, global::System.Nullable<global::System.DateTime> Original_End_Date, string Original_Position) {
+        public virtual int Delete(int Original_EmployeeId, int Original_PIN, string Original_FName, string Original_LName, System.DateTime Original_DOB, string Original_Address, string Original_City, string Original_Province, System.DateTime Original_Start_Date, global::System.Nullable<global::System.DateTime> Original_End_Date, string Original_Position, decimal Original_Wage) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_EmployeeId));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_PIN));
             if ((Original_FName == null)) {
@@ -1198,6 +1228,7 @@ SELECT EmployeeId, PIN, FName, LName, DOB, Address, City, Province, [Start Date]
             else {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_Position));
             }
+            this.Adapter.DeleteCommand.Parameters[12].Value = ((decimal)(Original_Wage));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1295,6 +1326,7 @@ SELECT EmployeeId, PIN, FName, LName, DOB, Address, City, Province, [Start Date]
                     System.DateTime Start_Date, 
                     global::System.Nullable<global::System.DateTime> End_Date, 
                     string Position, 
+                    decimal Wage, 
                     int Original_EmployeeId, 
                     int Original_PIN, 
                     string Original_FName, 
@@ -1306,6 +1338,7 @@ SELECT EmployeeId, PIN, FName, LName, DOB, Address, City, Province, [Start Date]
                     System.DateTime Original_Start_Date, 
                     global::System.Nullable<global::System.DateTime> Original_End_Date, 
                     string Original_Position, 
+                    decimal Original_Wage, 
                     int EmployeeId) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(PIN));
             if ((FName == null)) {
@@ -1352,55 +1385,57 @@ SELECT EmployeeId, PIN, FName, LName, DOB, Address, City, Province, [Start Date]
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Position));
             }
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_EmployeeId));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_PIN));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(Wage));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_EmployeeId));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_PIN));
             if ((Original_FName == null)) {
                 throw new global::System.ArgumentNullException("Original_FName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_FName));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_FName));
             }
             if ((Original_LName == null)) {
                 throw new global::System.ArgumentNullException("Original_LName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_LName));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_LName));
             }
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(Original_DOB));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(Original_DOB));
             if ((Original_Address == null)) {
                 throw new global::System.ArgumentNullException("Original_Address");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_Address));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_Address));
             }
             if ((Original_City == null)) {
                 throw new global::System.ArgumentNullException("Original_City");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_City));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_City));
             }
             if ((Original_Province == null)) {
                 throw new global::System.ArgumentNullException("Original_Province");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_Province));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_Province));
             }
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((System.DateTime)(Original_Start_Date));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((System.DateTime)(Original_Start_Date));
             if ((Original_End_Date.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((System.DateTime)(Original_End_Date.Value));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((System.DateTime)(Original_End_Date.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             if ((Original_Position == null)) {
                 throw new global::System.ArgumentNullException("Original_Position");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_Position));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_Position));
             }
-            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(EmployeeId));
+            this.Adapter.UpdateCommand.Parameters[23].Value = ((decimal)(Original_Wage));
+            this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(EmployeeId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1432,6 +1467,7 @@ SELECT EmployeeId, PIN, FName, LName, DOB, Address, City, Province, [Start Date]
                     System.DateTime Start_Date, 
                     global::System.Nullable<global::System.DateTime> End_Date, 
                     string Position, 
+                    decimal Wage, 
                     int Original_EmployeeId, 
                     int Original_PIN, 
                     string Original_FName, 
@@ -1442,8 +1478,9 @@ SELECT EmployeeId, PIN, FName, LName, DOB, Address, City, Province, [Start Date]
                     string Original_Province, 
                     System.DateTime Original_Start_Date, 
                     global::System.Nullable<global::System.DateTime> Original_End_Date, 
-                    string Original_Position) {
-            return this.Update(PIN, FName, LName, DOB, Address, City, Province, Start_Date, End_Date, Position, Original_EmployeeId, Original_PIN, Original_FName, Original_LName, Original_DOB, Original_Address, Original_City, Original_Province, Original_Start_Date, Original_End_Date, Original_Position, Original_EmployeeId);
+                    string Original_Position, 
+                    decimal Original_Wage) {
+            return this.Update(PIN, FName, LName, DOB, Address, City, Province, Start_Date, End_Date, Position, Wage, Original_EmployeeId, Original_PIN, Original_FName, Original_LName, Original_DOB, Original_Address, Original_City, Original_Province, Original_Start_Date, Original_End_Date, Original_Position, Original_Wage, Original_EmployeeId);
         }
     }
     
