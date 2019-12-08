@@ -21,7 +21,7 @@ namespace WorkerPunchClock
    
 
         }
-
+        
         //private string dbConnectionString;
 
         private void TimeTimerTicker_Tick(object sender, EventArgs e)

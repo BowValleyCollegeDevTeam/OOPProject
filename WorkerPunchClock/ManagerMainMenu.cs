@@ -181,9 +181,7 @@ namespace WorkerPunchClock
                     this.topInfoBar1.StaffNameLabel.Text = "Name: " + FirstName + " " + LastName;
 
                 }
-
-
-
+                
             }
 
         }
