@@ -13,6 +13,7 @@ namespace WorkerPunchClock
 {
     public partial class StaffLogin : Form
     {
+        public static string EmpNum = "";
         public StaffLogin()
         {
             InitializeComponent();
@@ -51,12 +52,14 @@ namespace WorkerPunchClock
                 var staffMainMenu = new StaffMainMenu();
                 Hide();
                 staffMainMenu.Show();
+                EmpNum = StaffPasscodeInputBox.Text;
             }
             else if(StaffPasscodeInputBox.Text == "4321")
             {
                 var ManagerMainMenu = new ManagerMainMenu();
                 Hide();
                 ManagerMainMenu.Show();
+                EmpNum = StaffPasscodeInputBox.Text;
             }
 
             else

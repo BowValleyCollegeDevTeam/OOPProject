@@ -254,8 +254,8 @@
         private System.Windows.Forms.Button Button8;
         private System.Windows.Forms.Button Button7;
         private System.Windows.Forms.Label EmployeePasscodeLabel;
-        private System.Windows.Forms.TextBox StaffPasscodeInputBox;
         private System.Windows.Forms.Label PasscodeLabel;
+        public System.Windows.Forms.TextBox StaffPasscodeInputBox;
     }
 }
 
