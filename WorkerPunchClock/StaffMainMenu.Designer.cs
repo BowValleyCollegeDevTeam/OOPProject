@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.WorkScheduleLabel = new System.Windows.Forms.Label();
             this.ClockInOutLabel = new System.Windows.Forms.Label();
             this.RequestTimeOffLabel = new System.Windows.Forms.Label();
@@ -36,11 +37,16 @@
             this.RequestTimeOffPictureBox = new System.Windows.Forms.PictureBox();
             this.ClockInOutPictureBox = new System.Windows.Forms.PictureBox();
             this.WorkSchedulePictureBox = new System.Windows.Forms.PictureBox();
-            this.topMenuBar1 = new WorkerPunchClock.TopMenuBar();
+            this.EmployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.workersDataSet = new WorkerPunchClock.WorkersDataSet();
+            this.employeesTableAdapter = new WorkerPunchClock.WorkersDataSetTableAdapters.EmployeesTableAdapter();
+            this.topInfoBar2 = new WorkerPunchClock.TopInfoBar();
             ((System.ComponentModel.ISupportInitialize)(this.PayStubPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RequestTimeOffPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockInOutPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WorkSchedulePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workersDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // WorkScheduleLabel
@@ -143,21 +149,33 @@
             this.WorkSchedulePictureBox.MouseLeave += new System.EventHandler(this.WorkScheduleMouseLeave);
             this.WorkSchedulePictureBox.MouseHover += new System.EventHandler(this.WorkScheduleMouseHover);
             // 
-            // topMenuBar1
+            // EmployeeBindingSource
             // 
-            this.topMenuBar1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.topMenuBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.topMenuBar1.Location = new System.Drawing.Point(0, 0);
-            this.topMenuBar1.Name = "topMenuBar1";
-            this.topMenuBar1.Size = new System.Drawing.Size(800, 35);
-            this.topMenuBar1.TabIndex = 9;
+            this.EmployeeBindingSource.DataMember = "Employees";
+            this.EmployeeBindingSource.DataSource = this.workersDataSet;
+            // 
+            // workersDataSet
+            // 
+            this.workersDataSet.DataSetName = "WorkersDataSet";
+            this.workersDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeesTableAdapter
+            // 
+            this.employeesTableAdapter.ClearBeforeFill = true;
+            // 
+            // topInfoBar2
+            // 
+            this.topInfoBar2.Location = new System.Drawing.Point(0, -1);
+            this.topInfoBar2.Name = "topInfoBar2";
+            this.topInfoBar2.Size = new System.Drawing.Size(678, 35);
+            this.topInfoBar2.TabIndex = 9;
             // 
             // StaffMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 266);
-            this.Controls.Add(this.topMenuBar1);
+            this.Controls.Add(this.topInfoBar2);
             this.Controls.Add(this.PayStubLabel);
             this.Controls.Add(this.PayStubPictureBox);
             this.Controls.Add(this.RequestTimeOffLabel);
@@ -175,6 +193,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.RequestTimeOffPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockInOutPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WorkSchedulePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workersDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,6 +210,10 @@
         private System.Windows.Forms.Label RequestTimeOffLabel;
         private System.Windows.Forms.PictureBox PayStubPictureBox;
         private System.Windows.Forms.Label PayStubLabel;
-        private TopMenuBar topMenuBar1;
+        private System.Windows.Forms.BindingSource EmployeeBindingSource;
+        private WorkersDataSet workersDataSet;
+        private WorkersDataSetTableAdapters.EmployeesTableAdapter employeesTableAdapter;
+        private TopInfoBar topInfoBar1;
+        private TopInfoBar topInfoBar2;
     }
 }
