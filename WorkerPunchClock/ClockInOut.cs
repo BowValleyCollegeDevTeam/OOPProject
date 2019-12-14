@@ -21,5 +21,12 @@ namespace WorkerPunchClock
         {
             new StaffMainMenu().Show();
         }
+
+        private void ClockInButton_Click(object sender, EventArgs e)
+        {
+            WorkerStatusClass workerStatus = new WorkerStatusClass();
+            workerStatus.Status = "Clocked In";
+            
+        }
     }
 }
