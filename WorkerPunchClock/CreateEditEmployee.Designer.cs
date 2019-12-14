@@ -48,6 +48,7 @@
             this.AddressTextBox = new System.Windows.Forms.TextBox();
             this.AddEditEmployeeButton = new System.Windows.Forms.Button();
             this.EmployeeNameComboBox = new System.Windows.Forms.ComboBox();
+            this.topInfoBar1 = new WorkerPunchClock.TopInfoBar();
             this.SuspendLayout();
             // 
             // FirstNameLabel
@@ -206,16 +207,25 @@
             // EmployeeNameComboBox
             // 
             this.EmployeeNameComboBox.FormattingEnabled = true;
-            this.EmployeeNameComboBox.Location = new System.Drawing.Point(262, 21);
+            this.EmployeeNameComboBox.Location = new System.Drawing.Point(270, 46);
             this.EmployeeNameComboBox.Name = "EmployeeNameComboBox";
             this.EmployeeNameComboBox.Size = new System.Drawing.Size(206, 21);
             this.EmployeeNameComboBox.TabIndex = 19;
+            // 
+            // topInfoBar1
+            // 
+            this.topInfoBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topInfoBar1.Location = new System.Drawing.Point(0, 0);
+            this.topInfoBar1.Name = "topInfoBar1";
+            this.topInfoBar1.Size = new System.Drawing.Size(499, 35);
+            this.topInfoBar1.TabIndex = 20;
             // 
             // CreateEditEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(499, 450);
+            this.Controls.Add(this.topInfoBar1);
             this.Controls.Add(this.EmployeeNameComboBox);
             this.Controls.Add(this.AddEditEmployeeButton);
             this.Controls.Add(this.AddressTextBox);
@@ -265,5 +275,6 @@
         private System.Windows.Forms.TextBox AddressTextBox;
         private System.Windows.Forms.Button AddEditEmployeeButton;
         private System.Windows.Forms.ComboBox EmployeeNameComboBox;
+        private TopInfoBar topInfoBar1;
     }
 }
