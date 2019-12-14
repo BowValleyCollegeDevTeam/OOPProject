@@ -31,7 +31,7 @@
             this.empLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.scheduleListBox = new System.Windows.Forms.ListBox();
-            this.topMenuBar1 = new WorkerPunchClock.TopMenuBar();
+            this.topInfoBar1 = new WorkerPunchClock.TopInfoBar();
             this.SuspendLayout();
             // 
             // empLabel
@@ -64,20 +64,20 @@
             this.scheduleListBox.Size = new System.Drawing.Size(776, 324);
             this.scheduleListBox.TabIndex = 3;
             // 
-            // topMenuBar1
+            // topInfoBar1
             // 
-            this.topMenuBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.topMenuBar1.Location = new System.Drawing.Point(0, 0);
-            this.topMenuBar1.Name = "topMenuBar1";
-            this.topMenuBar1.Size = new System.Drawing.Size(800, 35);
-            this.topMenuBar1.TabIndex = 4;
+            this.topInfoBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topInfoBar1.Location = new System.Drawing.Point(0, 0);
+            this.topInfoBar1.Name = "topInfoBar1";
+            this.topInfoBar1.Size = new System.Drawing.Size(800, 35);
+            this.topInfoBar1.TabIndex = 4;
             // 
             // WorkSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.topMenuBar1);
+            this.Controls.Add(this.topInfoBar1);
             this.Controls.Add(this.scheduleListBox);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.empLabel);
@@ -92,6 +92,6 @@
         private System.Windows.Forms.Label empLabel;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.ListBox scheduleListBox;
-        private TopMenuBar topMenuBar1;
+        private TopInfoBar topInfoBar1;
     }
 }
