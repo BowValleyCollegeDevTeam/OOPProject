@@ -22,11 +22,28 @@ namespace WorkerPunchClock
             new StaffMainMenu().Show();
         }
 
-        private void ClockInButton_Click(object sender, EventArgs e)
+        private void ClockInOut_Load(object sender, EventArgs e)
+        {
+            //
+            //To Do 
+            //
+            // If Employee Status is Clocked In Change ClockInOutButton.Text = "Clock Out
+
+        }
+
+        private void ClockInOutButton_Click(object sender, EventArgs e)
         {
             WorkerStatusClass workerStatus = new WorkerStatusClass();
             workerStatus.Status = "Clocked In";
-            
+
+            DateTime punchInOut = DateTime.Now;
+            string ClockFormat = "MM/dd/yyyy HH:mm:ss";
+
+            Label punchInOutLabel = new Label();
+            punchInOutLabel.AutoSize = true;
+            punchInOutLabel.Dock = DockStyle.Top;
+            punchInOutLabel.Text = punchInOut.ToString(ClockFormat);
+            ClockInOutPanel.Controls.Add(punchInOutLabel);
         }
     }
 }
