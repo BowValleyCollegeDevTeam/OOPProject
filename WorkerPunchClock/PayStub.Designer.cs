@@ -33,6 +33,8 @@
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.StaffNameLabel = new System.Windows.Forms.Label();
             this.NameSplitter = new System.Windows.Forms.Splitter();
+            this.payStubTextBox = new System.Windows.Forms.RichTextBox();
+            this.payStubComboBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,11 +93,32 @@
             this.NameSplitter.TabIndex = 0;
             this.NameSplitter.TabStop = false;
             // 
+            // payStubTextBox
+            // 
+            this.payStubTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.payStubTextBox.Location = new System.Drawing.Point(0, 111);
+            this.payStubTextBox.Name = "payStubTextBox";
+            this.payStubTextBox.Size = new System.Drawing.Size(800, 339);
+            this.payStubTextBox.TabIndex = 4;
+            this.payStubTextBox.Text = "";
+            // 
+            // payStubComboBox
+            // 
+            this.payStubComboBox.FormattingEnabled = true;
+            this.payStubComboBox.Items.AddRange(new object[] {
+            "Select Pay Period"});
+            this.payStubComboBox.Location = new System.Drawing.Point(1, 40);
+            this.payStubComboBox.Name = "payStubComboBox";
+            this.payStubComboBox.Size = new System.Drawing.Size(137, 21);
+            this.payStubComboBox.TabIndex = 5;
+            // 
             // PayStub
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.payStubComboBox);
+            this.Controls.Add(this.payStubTextBox);
             this.Controls.Add(this.panel1);
             this.Name = "PayStub";
             this.Text = "PayStub";
@@ -112,5 +135,7 @@
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Label StaffNameLabel;
         private System.Windows.Forms.Splitter NameSplitter;
+        private System.Windows.Forms.RichTextBox payStubTextBox;
+        private System.Windows.Forms.ComboBox payStubComboBox;
     }
 }
