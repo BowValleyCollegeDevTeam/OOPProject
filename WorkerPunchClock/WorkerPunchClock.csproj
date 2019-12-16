@@ -148,6 +148,9 @@
     <EmbeddedResource Include="CreateEditEmployee.resx">
       <DependentUpon>CreateEditEmployee.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CreateEditSchedule.resx">
+      <DependentUpon>CreateEditSchedule.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManagerMainMenu.resx">
       <DependentUpon>ManagerMainMenu.cs</DependentUpon>
     </EmbeddedResource>

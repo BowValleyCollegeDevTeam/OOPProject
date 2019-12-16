@@ -171,7 +171,7 @@
         private WorkersDataSetTableAdapters.EmployeesTableAdapter employeesTableAdapter;
         public System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Label StaffNameLabel;
-        private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.Splitter splitter2;
+        public System.Windows.Forms.Label StatusLabel;
     }
 }
