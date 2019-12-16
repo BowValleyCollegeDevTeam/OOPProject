@@ -12,7 +12,8 @@ using System.Configuration;
 
 namespace WorkerPunchClock
 {
-    //testing
+    // Cole Tucker Did This Page
+    
     public partial class StaffLogin : Form
     {
         private string dbConnectionString;
@@ -26,6 +27,9 @@ namespace WorkerPunchClock
         {
             get { return dpin.ToString(); }
         }
+
+        //This checks the status of the Employee from the database.
+        //Sets the top menu bar values equal to the values in the database for the employee.
         public void getEmployeePinLogin()
         {
             try {
@@ -116,6 +120,7 @@ namespace WorkerPunchClock
             Application.Exit();
         }
 
+        //These are to allow user to use keypad to enter in pin.
         private void NumPadKeyDown(object sender, KeyEventArgs e)
         {
 
@@ -177,25 +182,6 @@ namespace WorkerPunchClock
                 }
                 catch { }
             }
-
-            //else if (e.KeyCode == Keys.Enter)
-            //{
-            //    if (StaffPasscodeInputBox.Text == "1234")
-            //    {
-            //        var staffMainMenu = new StaffMainMenu();
-            //        Hide();
-            //        staffMainMenu.Show();
-            //    }
-
-            //    else
-            //    {
-            //        DialogResult PasscodeError = MessageBox.Show("Please Enter Valid Passcode", "Passcode Incorrect", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        if (PasscodeError == DialogResult.OK)
-            //        {
-            //            StaffPasscodeInputBox.Text = "";
-            //        }
-            //    }
-            //}
         }
 
         private void StaffLogin_Load(object sender, EventArgs e)

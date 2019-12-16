@@ -15,7 +15,8 @@ namespace WorkerPunchClock
     public partial class PayStub : Form
     {
         public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\coleb\Source\Repos\BowValleyCollegeDevTeam\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
-
+        //This checks the status of the Employee from the database.
+        //Sets the top menu bar values equal to the values in the database for the employee.
         public void CheckStatus()
         {
             using (StaffLogin login = new StaffLogin())
@@ -52,16 +53,7 @@ namespace WorkerPunchClock
             InitializeComponent();
         }
 
-        private void PayStubMainMenuButton_Click(object sender, EventArgs e)
-        {
-            new StaffMainMenu().Show();
-        }
-
-        private void payStubComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        //On load calls checkstatus
         private void PayStub_Load(object sender, EventArgs e)
         {
             CheckStatus();

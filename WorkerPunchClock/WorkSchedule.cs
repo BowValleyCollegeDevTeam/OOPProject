@@ -13,8 +13,10 @@ namespace WorkerPunchClock
 {
     public partial class WorkSchedule : Form
     {
+        //String must be changed depending on machine.
         public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\coleb\Source\Repos\BowValleyCollegeDevTeam\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
 
+        //This function checks if the user is clocked in, or clocked out and pushes it to the top status bar.
         public void CheckStatus()
         {
             using (StaffLogin login = new StaffLogin())
@@ -23,9 +25,11 @@ namespace WorkerPunchClock
             {
                 DataTable userPin = new DataTable();
 
+                //Fills data table
                 myConnection.Open();
                 employeePin.Fill(userPin);
                 myConnection.Close();
+                //populates top status bar
                 for (int row = 0; row < userPin.Rows.Count; row++)
                 {
                     string FirstName = (string)userPin.Rows[row]["FName"];
@@ -49,14 +53,8 @@ namespace WorkerPunchClock
         public WorkSchedule()
         {
             InitializeComponent();
-
         }
 
-
-        private void WorkScheduleMainMenuButton_Click(object sender, EventArgs e)
-        {
-            new StaffMainMenu().Show();
-        }
 
         private void WorkSchedule_Load(object sender, EventArgs e)
         {
@@ -81,6 +79,8 @@ namespace WorkerPunchClock
                         nameLabel.Text = FirstName + " " + LastName;
                     }
                 }
+
+                //Checks employee id to make sure only the employee who is currently signed in can view their pay stubs
                 using (SqlDataAdapter clientPayStubAdapter = new SqlDataAdapter($"SELECT * FROM Schedule WHERE EmployeeID = {employeeID}", myConnection))
                 {
                     DataTable clientPayStub = new DataTable();
@@ -93,6 +93,7 @@ namespace WorkerPunchClock
                         DateTime startDateTime = (DateTime)clientPayStub.Rows[row]["StartDateTime"];
                         DateTime endDateTime = (DateTime)clientPayStub.Rows[row]["EndDateTime"];
 
+                        //pushing pay stubs to list box
                         scheduleListBox.Items.Add($"Start: {startDateTime,-20} End: {endDateTime,-20}");
                     }
                 }

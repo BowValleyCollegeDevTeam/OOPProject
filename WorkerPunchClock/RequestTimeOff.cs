@@ -15,14 +15,14 @@ namespace WorkerPunchClock
 {
     public partial class RequestTimeOff : Form
     {
-        WorkersDataSet db = new WorkersDataSet();
         public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\coleb\Source\Repos\BowValleyCollegeDevTeam\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
 
-
+        //This function grabs the employee information and populates the top status bar
         public void CheckStatus()
         {
             using (StaffLogin login = new StaffLogin())
             using (SqlConnection myConnection = new SqlConnection(str))
+            // select statement for grabbing employee login pin
             using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {login.pin}", myConnection))
             {
                 DataTable userPin = new DataTable();
@@ -54,10 +54,6 @@ namespace WorkerPunchClock
             InitializeComponent();
         }
 
-        private void RequestTimeOffMainMenuButton_Click(object sender, EventArgs e)
-        {
-            new StaffMainMenu().Show();
-        }
 
         private void RequestTimeOff_Load(object sender, EventArgs e)
         {
@@ -80,6 +76,7 @@ namespace WorkerPunchClock
             }
         }
 
+        
         private void StartTimeOff_ValueChanged(object sender, EventArgs e)
         {
             EndTimeOff.Value = StartTimeOff.Value;
