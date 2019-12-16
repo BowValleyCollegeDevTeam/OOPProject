@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.EnterButton = new System.Windows.Forms.Button();
             this.Button0 = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
@@ -43,6 +44,11 @@
             this.EmployeePasscodeLabel = new System.Windows.Forms.Label();
             this.StaffPasscodeInputBox = new System.Windows.Forms.TextBox();
             this.PasscodeLabel = new System.Windows.Forms.Label();
+            this.EmployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.workersDataSet = new WorkerPunchClock.WorkersDataSet();
+            this.employeesTableAdapter = new WorkerPunchClock.WorkersDataSetTableAdapters.EmployeesTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workersDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // EnterButton
@@ -209,6 +215,20 @@
             this.PasscodeLabel.TabIndex = 16;
             this.PasscodeLabel.Text = "Passcode";
             // 
+            // EmployeeBindingSource
+            // 
+            this.EmployeeBindingSource.DataMember = "Employees";
+            this.EmployeeBindingSource.DataSource = this.workersDataSet;
+            // 
+            // workersDataSet
+            // 
+            this.workersDataSet.DataSetName = "WorkersDataSet";
+            this.workersDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeesTableAdapter
+            // 
+            this.employeesTableAdapter.ClearBeforeFill = true;
+            // 
             // StaffLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,6 +254,8 @@
             this.Text = "Staff Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StaffLoginClosing);
             this.Load += new System.EventHandler(this.StaffLogin_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.workersDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,8 +276,11 @@
         private System.Windows.Forms.Button Button8;
         private System.Windows.Forms.Button Button7;
         private System.Windows.Forms.Label EmployeePasscodeLabel;
+        private System.Windows.Forms.TextBox StaffPasscodeInputBox;
         private System.Windows.Forms.Label PasscodeLabel;
-        public System.Windows.Forms.TextBox StaffPasscodeInputBox;
+        private System.Windows.Forms.BindingSource EmployeeBindingSource;
+        private WorkersDataSet workersDataSet;
+        private WorkersDataSetTableAdapters.EmployeesTableAdapter employeesTableAdapter;
     }
 }
 

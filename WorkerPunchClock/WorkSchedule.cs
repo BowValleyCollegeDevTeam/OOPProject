@@ -15,7 +15,7 @@ namespace WorkerPunchClock
         public WorkSchedule()
         {
             InitializeComponent();
-            nameLabel.Text = StaffLogin.EmpNum;
+            
         }
 
 
