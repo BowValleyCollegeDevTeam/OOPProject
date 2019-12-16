@@ -28,13 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-
+            //this.topMenuBar1 = new WorkerPunchClock.TopMenuBar();
             this.ClockInButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // topMenuBar1
             // 
-
+            //this.topMenuBar1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            //this.topMenuBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            //this.topMenuBar1.Location = new System.Drawing.Point(0, 0);
+            //this.topMenuBar1.Name = "topMenuBar1";
+            //this.topMenuBar1.Size = new System.Drawing.Size(800, 35);
+            //this.topMenuBar1.TabIndex = 0;
             // 
             // ClockInButton
             // 
@@ -55,6 +60,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.ClockInButton);
+            //this.Controls.Add(this.topMenuBar1);
             this.Name = "ClockInOut";
             this.Text = "ClockInOut";
             this.ResumeLayout(false);
@@ -63,6 +69,7 @@
 
         #endregion
 
+        //private TopMenuBar topMenuBar1;
         private System.Windows.Forms.Button ClockInButton;
     }
 }
