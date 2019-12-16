@@ -20,7 +20,7 @@ namespace WorkerPunchClock
         
         }
 
-        public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\coleb\Source\Repos\BowValleyCollegeDevTeam\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
+        public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kara\Source\Repos\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
 
         private void ManagerMainMenuClosing(object sender, FormClosingEventArgs e)
         {
@@ -179,7 +179,7 @@ namespace WorkerPunchClock
                 {
                     string FirstName = (string)userPin.Rows[row]["FName"];
                     string LastName = (string)userPin.Rows[row]["LName"];
-                    //this.topInfoBar1.StaffNameLabel.Text = "Name: " + FirstName + " " + LastName;
+                    this.topInfoBar1.StaffNameLabel.Text = "Name: " + FirstName + " " + LastName;
 
                 }
                 
