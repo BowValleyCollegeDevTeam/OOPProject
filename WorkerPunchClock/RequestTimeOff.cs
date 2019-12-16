@@ -22,6 +22,7 @@ namespace WorkerPunchClock
         {
             using (StaffLogin login = new StaffLogin())
             using (SqlConnection myConnection = new SqlConnection(str))
+            // select statement for grabbing employee login pin
             using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {login.pin}", myConnection))
             {
                 DataTable userPin = new DataTable();
@@ -53,6 +54,7 @@ namespace WorkerPunchClock
             InitializeComponent();
         }
 
+
         private void RequestTimeOff_Load(object sender, EventArgs e)
         {
             CheckStatus();
@@ -74,6 +76,7 @@ namespace WorkerPunchClock
             }
         }
 
+        
         private void StartTimeOff_ValueChanged(object sender, EventArgs e)
         {
             EndTimeOff.Value = StartTimeOff.Value;
