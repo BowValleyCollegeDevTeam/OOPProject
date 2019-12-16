@@ -72,6 +72,7 @@
             // ActiveStatusSplitter
             // 
             this.ActiveStatusSplitter.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ActiveStatusSplitter.Enabled = false;
             this.ActiveStatusSplitter.Location = new System.Drawing.Point(299, 0);
             this.ActiveStatusSplitter.Name = "ActiveStatusSplitter";
             this.ActiveStatusSplitter.Size = new System.Drawing.Size(138, 33);

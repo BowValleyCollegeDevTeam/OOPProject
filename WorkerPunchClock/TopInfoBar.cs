@@ -21,13 +21,14 @@ namespace WorkerPunchClock
    
 
         }
-
+        
         //private string dbConnectionString;
 
         private void TimeTimerTicker_Tick(object sender, EventArgs e)
         {
             DateTime dateTime = DateTime.Now;
-            this.TimeLabel.Text = dateTime.ToString();
+            string ClockFormat = "MM/dd/yyyy HH:mm:ss";
+            this.TimeLabel.Text = dateTime.ToString(ClockFormat);
           
         }
 

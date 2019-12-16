@@ -142,14 +142,11 @@
     <Compile Include="WorkSchedule.Designer.cs">
       <DependentUpon>WorkSchedule.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ApproveDenyTimeOff.resx">
-      <DependentUpon>ApproveDenyTimeOff.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ClockInOut.resx">
       <DependentUpon>ClockInOut.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateEditSchedule.resx">
-      <DependentUpon>CreateEditSchedule.cs</DependentUpon>
+    <EmbeddedResource Include="CreateEditEmployee.resx">
+      <DependentUpon>CreateEditEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManagerMainMenu.resx">
       <DependentUpon>ManagerMainMenu.cs</DependentUpon>

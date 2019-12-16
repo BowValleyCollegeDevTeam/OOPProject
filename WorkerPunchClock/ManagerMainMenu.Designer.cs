@@ -48,6 +48,7 @@
             this.EmployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.workersDataSet = new WorkerPunchClock.WorkersDataSet();
             this.employeesTableAdapter = new WorkerPunchClock.WorkersDataSetTableAdapters.EmployeesTableAdapter();
+            this.topInfoBar1 = new WorkerPunchClock.TopInfoBar();
             ((System.ComponentModel.ISupportInitialize)(this.ApproveDenyTimeOffPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ApprovePayStubsPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CreateEditEmployeePictureBox)).BeginInit();
@@ -274,11 +275,20 @@
             // 
             this.employeesTableAdapter.ClearBeforeFill = true;
             // 
+            // topInfoBar1
+            // 
+            this.topInfoBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topInfoBar1.Location = new System.Drawing.Point(0, 0);
+            this.topInfoBar1.Name = "topInfoBar1";
+            this.topInfoBar1.Size = new System.Drawing.Size(800, 35);
+            this.topInfoBar1.TabIndex = 25;
+            // 
             // ManagerMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.topInfoBar1);
             this.Controls.Add(this.ApproveDenyTimeOffLabel);
             this.Controls.Add(this.ApproveDenyTimeOffPictureBox);
             this.Controls.Add(this.ApprovePayStubsLabel);
@@ -296,7 +306,7 @@
             this.Controls.Add(this.WorkScheduleLabel);
             this.Controls.Add(this.WorkSchedulePictureBox);
             this.Name = "ManagerMainMenu";
-            this.Text = "Manager Main Menu";
+            this.Text = "5";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManagerMainMenuClosing);
             this.Load += new System.EventHandler(this.ManagerMainMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ApproveDenyTimeOffPictureBox)).EndInit();
@@ -334,5 +344,6 @@
         private System.Windows.Forms.BindingSource EmployeeBindingSource;
         private WorkersDataSet workersDataSet;
         private WorkersDataSetTableAdapters.EmployeesTableAdapter employeesTableAdapter;
+        private TopInfoBar topInfoBar1;
     }
 }

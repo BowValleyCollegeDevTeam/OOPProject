@@ -14,12 +14,13 @@ namespace WorkerPunchClock
 {
     public partial class ManagerMainMenu : Form
     {
-        private string dbConnectionString;
         public ManagerMainMenu()
         {
             InitializeComponent();
         
         }
+
+        public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\coleb\Source\Repos\BowValleyCollegeDevTeam\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
 
         private void ManagerMainMenuClosing(object sender, FormClosingEventArgs e)
         {
@@ -164,9 +165,9 @@ namespace WorkerPunchClock
         //}
         private void ManagerMainMenu_Load(object sender, EventArgs e)
         {
-            dbConnectionString = ConfigurationManager.ConnectionStrings["WorkerPunchClock.Properties.Settings.WorkersConnectionString"].ConnectionString;
+           
             using (StaffLogin login = new StaffLogin())
-            using (SqlConnection myConnection = new SqlConnection(dbConnectionString))
+            using (SqlConnection myConnection = new SqlConnection(str))
             using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {login.pin}", myConnection))
             {
                 DataTable userPin = new DataTable();
@@ -178,12 +179,10 @@ namespace WorkerPunchClock
                 {
                     string FirstName = (string)userPin.Rows[row]["FName"];
                     string LastName = (string)userPin.Rows[row]["LName"];
-                    //this.topInfoBar1.StaffNameLabel.Text = "Name: " + FirstName + " " + LastName;
+                    this.topInfoBar1.StaffNameLabel.Text = "Name: " + FirstName + " " + LastName;
 
                 }
-
-
-
+                
             }
 
         }
