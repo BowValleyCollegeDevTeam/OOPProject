@@ -42,6 +42,8 @@ namespace WorkerPunchClock {
         
         private global::System.Data.DataRelation relationFK_EmployeeIDToRequestTimeOff;
         
+        private global::System.Data.DataRelation relationFK_EmployeeIDtoSchedule;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -302,6 +304,7 @@ namespace WorkerPunchClock {
             this.relationFK_ClockINClockOuttoPaystub = this.Relations["FK_ClockINClockOuttoPaystub"];
             this.relationFK_EmployeeIDtoPayStub = this.Relations["FK_EmployeeIDtoPayStub"];
             this.relationFK_EmployeeIDToRequestTimeOff = this.Relations["FK_EmployeeIDToRequestTimeOff"];
+            this.relationFK_EmployeeIDtoSchedule = this.Relations["FK_EmployeeIDtoSchedule"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -338,6 +341,10 @@ namespace WorkerPunchClock {
                         this.tableEmployees.EmployeeIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableRequestTimeOff.EmployeeIDColumn}, false);
             this.Relations.Add(this.relationFK_EmployeeIDToRequestTimeOff);
+            this.relationFK_EmployeeIDtoSchedule = new global::System.Data.DataRelation("FK_EmployeeIDtoSchedule", new global::System.Data.DataColumn[] {
+                        this.tableEmployees.EmployeeIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableSchedule.EmployeeIDColumn}, false);
+            this.Relations.Add(this.relationFK_EmployeeIDtoSchedule);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1994,13 +2001,16 @@ namespace WorkerPunchClock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ScheduleRow AddScheduleRow(string EmployeeID, System.DateTime StartDateTime, System.DateTime EndDateTime) {
+            public ScheduleRow AddScheduleRow(EmployeesRow parentEmployeesRowByFK_EmployeeIDtoSchedule, System.DateTime StartDateTime, System.DateTime EndDateTime) {
                 ScheduleRow rowScheduleRow = ((ScheduleRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        EmployeeID,
+                        null,
                         StartDateTime,
                         EndDateTime};
+                if ((parentEmployeesRowByFK_EmployeeIDtoSchedule != null)) {
+                    columnValuesArray[1] = parentEmployeesRowByFK_EmployeeIDtoSchedule[0];
+                }
                 rowScheduleRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowScheduleRow);
                 return rowScheduleRow;
@@ -2041,7 +2051,7 @@ namespace WorkerPunchClock {
             private void InitClass() {
                 this.columnScheduleID = new global::System.Data.DataColumn("ScheduleID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnScheduleID);
-                this.columnEmployeeID = new global::System.Data.DataColumn("EmployeeID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEmployeeID = new global::System.Data.DataColumn("EmployeeID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmployeeID);
                 this.columnStartDateTime = new global::System.Data.DataColumn("StartDateTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStartDateTime);
@@ -2056,7 +2066,6 @@ namespace WorkerPunchClock {
                 this.columnScheduleID.ReadOnly = true;
                 this.columnScheduleID.Unique = true;
                 this.columnEmployeeID.AllowDBNull = false;
-                this.columnEmployeeID.MaxLength = 10;
                 this.columnStartDateTime.AllowDBNull = false;
             }
             
@@ -2377,6 +2386,17 @@ namespace WorkerPunchClock {
                 }
                 else {
                     return ((RequestTimeOffRow[])(base.GetChildRows(this.Table.ChildRelations["FK_EmployeeIDToRequestTimeOff"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ScheduleRow[] GetScheduleRows() {
+                if ((this.Table.ChildRelations["FK_EmployeeIDtoSchedule"] == null)) {
+                    return new ScheduleRow[0];
+                }
+                else {
+                    return ((ScheduleRow[])(base.GetChildRows(this.Table.ChildRelations["FK_EmployeeIDtoSchedule"])));
                 }
             }
         }
@@ -2763,9 +2783,9 @@ namespace WorkerPunchClock {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string EmployeeID {
+            public int EmployeeID {
                 get {
-                    return ((string)(this[this.tableSchedule.EmployeeIDColumn]));
+                    return ((int)(this[this.tableSchedule.EmployeeIDColumn]));
                 }
                 set {
                     this[this.tableSchedule.EmployeeIDColumn] = value;
@@ -2796,6 +2816,17 @@ namespace WorkerPunchClock {
                 }
                 set {
                     this[this.tableSchedule.EndDateTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public EmployeesRow EmployeesRow {
+                get {
+                    return ((EmployeesRow)(this.GetParentRow(this.Table.ParentRelations["FK_EmployeeIDtoSchedule"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_EmployeeIDtoSchedule"]);
                 }
             }
             
@@ -4789,7 +4820,7 @@ SELECT RequestTimeOffID, EmployeeID, StartDate, EndDate, Status FROM RequestTime
             this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Schedule] WHERE (([ScheduleID] = @Original_ScheduleID) AND ([EmployeeID] = @Original_EmployeeID) AND ([StartDateTime] = @Original_StartDateTime) AND ((@IsNull_EndDateTime = 1 AND [EndDateTime] IS NULL) OR ([EndDateTime] = @Original_EndDateTime)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ScheduleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ScheduleID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmployeeID", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmployeeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StartDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StartDateTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EndDateTime", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EndDateTime", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EndDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EndDateTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -4799,7 +4830,7 @@ SELECT RequestTimeOffID, EmployeeID, StartDate, EndDate, Status FROM RequestTime
                 "S (@EmployeeID, @StartDateTime, @EndDateTime);\r\nSELECT ScheduleID, EmployeeID, S" +
                 "tartDateTime, EndDateTime FROM Schedule WHERE (ScheduleID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeID", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StartDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StartDateTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EndDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EndDateTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
@@ -4807,11 +4838,11 @@ SELECT RequestTimeOffID, EmployeeID, StartDate, EndDate, Status FROM RequestTime
             this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Schedule] SET [EmployeeID] = @EmployeeID, [StartDateTime] = @StartDateTime, [EndDateTime] = @EndDateTime WHERE (([ScheduleID] = @Original_ScheduleID) AND ([EmployeeID] = @Original_EmployeeID) AND ([StartDateTime] = @Original_StartDateTime) AND ((@IsNull_EndDateTime = 1 AND [EndDateTime] IS NULL) OR ([EndDateTime] = @Original_EndDateTime)));
 SELECT ScheduleID, EmployeeID, StartDateTime, EndDateTime FROM Schedule WHERE (ScheduleID = @ScheduleID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeID", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StartDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StartDateTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EndDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EndDateTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ScheduleID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ScheduleID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmployeeID", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmployeeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StartDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StartDateTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EndDateTime", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EndDateTime", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EndDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EndDateTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -4892,14 +4923,9 @@ SELECT ScheduleID, EmployeeID, StartDateTime, EndDateTime FROM Schedule WHERE (S
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ScheduleID, string Original_EmployeeID, System.DateTime Original_StartDateTime, global::System.Nullable<global::System.DateTime> Original_EndDateTime) {
+        public virtual int Delete(int Original_ScheduleID, int Original_EmployeeID, System.DateTime Original_StartDateTime, global::System.Nullable<global::System.DateTime> Original_EndDateTime) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ScheduleID));
-            if ((Original_EmployeeID == null)) {
-                throw new global::System.ArgumentNullException("Original_EmployeeID");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_EmployeeID));
-            }
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_EmployeeID));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_StartDateTime));
             if ((Original_EndDateTime.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
@@ -4929,13 +4955,8 @@ SELECT ScheduleID, EmployeeID, StartDateTime, EndDateTime FROM Schedule WHERE (S
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string EmployeeID, System.DateTime StartDateTime, global::System.Nullable<global::System.DateTime> EndDateTime) {
-            if ((EmployeeID == null)) {
-                throw new global::System.ArgumentNullException("EmployeeID");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(EmployeeID));
-            }
+        public virtual int Insert(int EmployeeID, System.DateTime StartDateTime, global::System.Nullable<global::System.DateTime> EndDateTime) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(EmployeeID));
             this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(StartDateTime));
             if ((EndDateTime.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(EndDateTime.Value));
@@ -4963,13 +4984,8 @@ SELECT ScheduleID, EmployeeID, StartDateTime, EndDateTime FROM Schedule WHERE (S
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string EmployeeID, System.DateTime StartDateTime, global::System.Nullable<global::System.DateTime> EndDateTime, int Original_ScheduleID, string Original_EmployeeID, System.DateTime Original_StartDateTime, global::System.Nullable<global::System.DateTime> Original_EndDateTime, int ScheduleID) {
-            if ((EmployeeID == null)) {
-                throw new global::System.ArgumentNullException("EmployeeID");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(EmployeeID));
-            }
+        public virtual int Update(int EmployeeID, System.DateTime StartDateTime, global::System.Nullable<global::System.DateTime> EndDateTime, int Original_ScheduleID, int Original_EmployeeID, System.DateTime Original_StartDateTime, global::System.Nullable<global::System.DateTime> Original_EndDateTime, int ScheduleID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(EmployeeID));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(StartDateTime));
             if ((EndDateTime.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(EndDateTime.Value));
@@ -4978,12 +4994,7 @@ SELECT ScheduleID, EmployeeID, StartDateTime, EndDateTime FROM Schedule WHERE (S
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_ScheduleID));
-            if ((Original_EmployeeID == null)) {
-                throw new global::System.ArgumentNullException("Original_EmployeeID");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_EmployeeID));
-            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_EmployeeID));
             this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(Original_StartDateTime));
             if ((Original_EndDateTime.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
@@ -5014,7 +5025,7 @@ SELECT ScheduleID, EmployeeID, StartDateTime, EndDateTime FROM Schedule WHERE (S
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string EmployeeID, System.DateTime StartDateTime, global::System.Nullable<global::System.DateTime> EndDateTime, int Original_ScheduleID, string Original_EmployeeID, System.DateTime Original_StartDateTime, global::System.Nullable<global::System.DateTime> Original_EndDateTime) {
+        public virtual int Update(int EmployeeID, System.DateTime StartDateTime, global::System.Nullable<global::System.DateTime> EndDateTime, int Original_ScheduleID, int Original_EmployeeID, System.DateTime Original_StartDateTime, global::System.Nullable<global::System.DateTime> Original_EndDateTime) {
             return this.Update(EmployeeID, StartDateTime, EndDateTime, Original_ScheduleID, Original_EmployeeID, Original_StartDateTime, Original_EndDateTime, Original_ScheduleID);
         }
     }
