@@ -12,9 +12,12 @@ using System.Data.SqlClient;
 
 namespace WorkerPunchClock
 {
+    //Coded by Ana Siemens
     public partial class ApproveDenyTimeOff : Form
     {
+        // please change this to your own connection string 
         public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\coleb\Source\Repos\BowValleyCollegeDevTeam\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
+        // we use this string to locally use the database so there is no runtime errors
         public ApproveDenyTimeOff()
         {
             InitializeComponent();
@@ -23,6 +26,9 @@ namespace WorkerPunchClock
 
         public void CheckStatus()
         {
+            //This checks the status of the Employee from the database.
+            //Sets the top menu bar values equal to the values in the database for the employee.
+
             using (StaffLogin login = new StaffLogin())
             using (SqlConnection myConnection = new SqlConnection(str))
             using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {login.pin}", myConnection))
@@ -55,6 +61,7 @@ namespace WorkerPunchClock
         }
         private void EmployeeName()
         {
+            // connects to the databse to grab all the employee names
             using (SqlConnection myconnection = new SqlConnection(str))
             using (SqlDataAdapter emp = new SqlDataAdapter($"SELECT * FROM Employees", myconnection))
             {
@@ -68,16 +75,18 @@ namespace WorkerPunchClock
                 {
                     string FirstName = (string)getEmp.Rows[row]["FName"];
                     string LastName = (string)getEmp.Rows[row]["LName"];
+                    // Adds all the names into the combo box
                     this.EmployeeNameComboBox.Items.Add(FirstName +" "+ LastName);
                 }
             };
         }
         private void RequestedTimeOff()
         {
+            // depending on the employee name it will display their requested time off
             string[] selectedEmployee = EmployeeNameComboBox.Text.Split(' ');
             string emFName = selectedEmployee[0];
             string emLName = selectedEmployee[1];
-
+            // splits the employee name from the combo box so that you can use it for the select statement
             using (SqlConnection myconnection = new SqlConnection(str))
             using (SqlDataAdapter Time = new SqlDataAdapter($"SELECT * FROM RequestTimeOff JOIN Employees ON RequestTimeOff.EmployeeID = Employees.EmployeeId WHERE FName = '{emFName}' AND LName = '{emLName}'", myconnection))
             {
@@ -99,15 +108,13 @@ namespace WorkerPunchClock
         private void EmployeeNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             RequestedTimeOff();
-            
-            /// TO DO
-            /// This should display the employee names
-            /// depending on the employee name it should
-            /// change what gets displayed in the timeoff panel
+            // runs everytime the employee combo box is changed
         }
 
         private void ApproveTimeOff()
         {
+            // grabs the requested time off from the databse
+            // depending on the employee name
             string[] selectedEmployee = EmployeeNameComboBox.Text.Split(' ');
             string emFName = selectedEmployee[0];
             string emLName = selectedEmployee[1];
@@ -125,6 +132,7 @@ namespace WorkerPunchClock
                 for (int row = 0; row < a.Rows.Count; row++)
                 {
                     int employeeid = (int)a.Rows[row]["EmployeeID"];
+                    // updates the database whether their requested time off is aprroved or denied
                     SqlCommand RequestApproved = new SqlCommand($"update RequestTimeOff Set Status = 'Approved' " +
                         "WHERE EmployeeID = "+employeeid+"", myconnection);
                     RequestApproved.ExecuteNonQuery();
@@ -144,6 +152,8 @@ namespace WorkerPunchClock
 
         private void DenyTime()
         {
+            // grabs the requested time off from the databse
+            // depending on the employee name
             string[] selectedEmployee = EmployeeNameComboBox.Text.Split(' ');
             string emFName = selectedEmployee[0];
             string emLName = selectedEmployee[1];
@@ -161,6 +171,7 @@ namespace WorkerPunchClock
                 for (int row = 0; row < deny.Rows.Count; row++)
                 {
                     int employeeid = (int)deny.Rows[row]["EmployeeID"];
+                    // updates the database whether their requested time off is aprroved or denied
                     SqlCommand RequestApproved = new SqlCommand($"update RequestTimeOff Set Status = 'Denied' " +
                         "WHERE EmployeeID = " + employeeid + "", myconnection);
                     RequestApproved.ExecuteNonQuery();
