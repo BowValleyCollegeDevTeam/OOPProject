@@ -31,9 +31,9 @@ namespace WorkerPunchClock
 
         private void StaffMainMenu_Load(object sender, EventArgs e)
         {
-            string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kara\Source\Repos\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
+            dbConnectionString = ConfigurationManager.ConnectionStrings["WorkerPunchClock.Properties.Settings.WorkersConnectionString"].ConnectionString;
             using (StaffLogin login = new StaffLogin())
-            using (SqlConnection myConnection = new SqlConnection(str))
+            using (SqlConnection myConnection = new SqlConnection(dbConnectionString))
             using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {login.pin}", myConnection))
             {
                 DataTable userPin = new DataTable();

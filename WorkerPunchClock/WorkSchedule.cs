@@ -15,6 +15,7 @@ namespace WorkerPunchClock
         public WorkSchedule()
         {
             InitializeComponent();
+            
         }
 
 
