@@ -248,6 +248,7 @@
             this.Controls.Add(this.FirstNameLabel);
             this.Name = "CreateEditEmployee";
             this.Text = "CreateEditEmployees";
+            this.Load += new System.EventHandler(this.CreateEditEmployee_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

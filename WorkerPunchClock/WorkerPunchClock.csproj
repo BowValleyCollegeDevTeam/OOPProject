@@ -145,6 +145,9 @@
     <EmbeddedResource Include="ClockInOut.resx">
       <DependentUpon>ClockInOut.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CreateEditEmployee.resx">
+      <DependentUpon>CreateEditEmployee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManagerMainMenu.resx">
       <DependentUpon>ManagerMainMenu.cs</DependentUpon>
     </EmbeddedResource>
