@@ -179,7 +179,7 @@ namespace WorkerPunchClock
                 {
                     string FirstName = (string)userPin.Rows[row]["FName"];
                     string LastName = (string)userPin.Rows[row]["LName"];
-                    //this.topInfoBar1.StaffNameLabel.Text = "Name: " + FirstName + " " + LastName;
+                    this.topInfoBar1.StaffNameLabel.Text = "Name: " + FirstName + " " + LastName;
 
                 }
                 
