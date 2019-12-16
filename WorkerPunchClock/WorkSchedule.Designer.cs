@@ -83,6 +83,7 @@
             this.Controls.Add(this.empLabel);
             this.Name = "WorkSchedule";
             this.Text = "WorkSchedule";
+            this.Load += new System.EventHandler(this.WorkSchedule_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
