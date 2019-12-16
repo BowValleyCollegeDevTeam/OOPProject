@@ -49,6 +49,8 @@
             this.AddEditEmployeeButton = new System.Windows.Forms.Button();
             this.EmployeeNameComboBox = new System.Windows.Forms.ComboBox();
             this.topInfoBar1 = new WorkerPunchClock.TopInfoBar();
+            this.positiontxtbx = new System.Windows.Forms.TextBox();
+            this.positionlbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // FirstNameLabel
@@ -203,6 +205,7 @@
             this.AddEditEmployeeButton.TabIndex = 18;
             this.AddEditEmployeeButton.Text = "Add/Edit Employee";
             this.AddEditEmployeeButton.UseVisualStyleBackColor = true;
+            this.AddEditEmployeeButton.Click += new System.EventHandler(this.AddEditEmployeeButton_Click);
             // 
             // EmployeeNameComboBox
             // 
@@ -211,6 +214,7 @@
             this.EmployeeNameComboBox.Name = "EmployeeNameComboBox";
             this.EmployeeNameComboBox.Size = new System.Drawing.Size(206, 21);
             this.EmployeeNameComboBox.TabIndex = 19;
+            this.EmployeeNameComboBox.SelectedValueChanged += new System.EventHandler(this.EmployeeNameComboBox_SelectedValueChanged);
             // 
             // topInfoBar1
             // 
@@ -220,11 +224,29 @@
             this.topInfoBar1.Size = new System.Drawing.Size(499, 35);
             this.topInfoBar1.TabIndex = 20;
             // 
+            // positiontxtbx
+            // 
+            this.positiontxtbx.Location = new System.Drawing.Point(119, 308);
+            this.positiontxtbx.Name = "positiontxtbx";
+            this.positiontxtbx.Size = new System.Drawing.Size(100, 20);
+            this.positiontxtbx.TabIndex = 21;
+            // 
+            // positionlbl
+            // 
+            this.positionlbl.AutoSize = true;
+            this.positionlbl.Location = new System.Drawing.Point(44, 316);
+            this.positionlbl.Name = "positionlbl";
+            this.positionlbl.Size = new System.Drawing.Size(47, 13);
+            this.positionlbl.TabIndex = 22;
+            this.positionlbl.Text = "Position:";
+            // 
             // CreateEditEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(499, 450);
+            this.Controls.Add(this.positionlbl);
+            this.Controls.Add(this.positiontxtbx);
             this.Controls.Add(this.topInfoBar1);
             this.Controls.Add(this.EmployeeNameComboBox);
             this.Controls.Add(this.AddEditEmployeeButton);
@@ -260,22 +282,24 @@
         private System.Windows.Forms.Label LastNameLabel;
         private System.Windows.Forms.Label PINLabel;
         private System.Windows.Forms.Label DOBLabel;
-        private System.Windows.Forms.TextBox FirstNameTextBox;
-        private System.Windows.Forms.TextBox DOBTextBox;
-        private System.Windows.Forms.TextBox PINTextBox;
-        private System.Windows.Forms.TextBox LastNameTextBox;
         private System.Windows.Forms.Label AddressLabel;
         private System.Windows.Forms.Label ProvinceLabel;
         private System.Windows.Forms.Label CityLabel;
         private System.Windows.Forms.Label StartDateLabel;
         private System.Windows.Forms.Label WageLabel;
-        private System.Windows.Forms.TextBox WageTextBox;
-        private System.Windows.Forms.TextBox StartDateTextBox;
-        private System.Windows.Forms.TextBox ProvinceTextBox;
-        private System.Windows.Forms.TextBox CityTextBox;
-        private System.Windows.Forms.TextBox AddressTextBox;
         private System.Windows.Forms.Button AddEditEmployeeButton;
-        private System.Windows.Forms.ComboBox EmployeeNameComboBox;
         private TopInfoBar topInfoBar1;
+        public System.Windows.Forms.TextBox FirstNameTextBox;
+        public System.Windows.Forms.TextBox DOBTextBox;
+        public System.Windows.Forms.TextBox PINTextBox;
+        public System.Windows.Forms.TextBox LastNameTextBox;
+        public System.Windows.Forms.TextBox WageTextBox;
+        public System.Windows.Forms.TextBox StartDateTextBox;
+        public System.Windows.Forms.TextBox ProvinceTextBox;
+        public System.Windows.Forms.TextBox CityTextBox;
+        public System.Windows.Forms.TextBox AddressTextBox;
+        public System.Windows.Forms.ComboBox EmployeeNameComboBox;
+        public System.Windows.Forms.TextBox positiontxtbx;
+        private System.Windows.Forms.Label positionlbl;
     }
 }

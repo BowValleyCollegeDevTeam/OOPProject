@@ -1,0 +1,1 @@
+﻿UPDATE Employees SET PIN =1234567, FName = 'Bill', LName = 'Bob', DOB ='2010-10-15 12:00:00 AM', Address ='Number Street', City = 'Number', Province = 'Number', [Start Date] '2014-09-03 12:00:00 AM', Position = 'Employee', Wage = '15.0000', Status = 0;
