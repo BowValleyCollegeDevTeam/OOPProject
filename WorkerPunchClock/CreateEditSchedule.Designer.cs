@@ -28,29 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.topInfoBar1 = new WorkerPunchClock.TopInfoBar();
+            this.editScheduleListBox = new System.Windows.Forms.ListBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.empLabel = new System.Windows.Forms.Label();
             this.SelectEmployeeComboBox = new System.Windows.Forms.ComboBox();
+            this.topInfoBar1 = new WorkerPunchClock.TopInfoBar();
             this.SuspendLayout();
             // 
-            // listBox1
+            // editScheduleListBox
             // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(0, 173);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(800, 277);
-            this.listBox1.TabIndex = 0;
-            // 
-            // topInfoBar1
-            // 
-            this.topInfoBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.topInfoBar1.Location = new System.Drawing.Point(0, 0);
-            this.topInfoBar1.Name = "topInfoBar1";
-            this.topInfoBar1.Size = new System.Drawing.Size(800, 35);
-            this.topInfoBar1.TabIndex = 1;
+            this.editScheduleListBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.editScheduleListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editScheduleListBox.FormattingEnabled = true;
+            this.editScheduleListBox.ItemHeight = 25;
+            this.editScheduleListBox.Location = new System.Drawing.Point(0, 146);
+            this.editScheduleListBox.Name = "editScheduleListBox";
+            this.editScheduleListBox.Size = new System.Drawing.Size(800, 304);
+            this.editScheduleListBox.TabIndex = 0;
             // 
             // nameLabel
             // 
@@ -80,6 +74,14 @@
             this.SelectEmployeeComboBox.Size = new System.Drawing.Size(143, 21);
             this.SelectEmployeeComboBox.TabIndex = 5;
             // 
+            // topInfoBar1
+            // 
+            this.topInfoBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topInfoBar1.Location = new System.Drawing.Point(0, 0);
+            this.topInfoBar1.Name = "topInfoBar1";
+            this.topInfoBar1.Size = new System.Drawing.Size(800, 35);
+            this.topInfoBar1.TabIndex = 1;
+            // 
             // CreateEditSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -89,7 +91,7 @@
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.empLabel);
             this.Controls.Add(this.topInfoBar1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.editScheduleListBox);
             this.Name = "CreateEditSchedule";
             this.Text = "CreateEditSchedule";
             this.ResumeLayout(false);
@@ -99,7 +101,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox editScheduleListBox;
         private TopInfoBar topInfoBar1;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label empLabel;
