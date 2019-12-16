@@ -16,7 +16,7 @@ namespace WorkerPunchClock
     public partial class RequestTimeOff : Form
     {
         WorkersDataSet db = new WorkersDataSet();
-        public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ajdon\Documents\GitHub\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security = True";
+        public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\coleb\Source\Repos\BowValleyCollegeDevTeam\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
 
 
         public void CheckStatus()
