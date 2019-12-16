@@ -14,7 +14,7 @@ namespace WorkerPunchClock
 {
     public partial class ApproveDenyTimeOff : Form
     {
-        public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\heart\repos\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
+        public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\coleb\Source\Repos\BowValleyCollegeDevTeam\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
         public ApproveDenyTimeOff()
         {
             InitializeComponent();

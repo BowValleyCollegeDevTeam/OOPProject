@@ -49,7 +49,7 @@ namespace WorkerPunchClock
                             if (position == "Manager" && userInput == dpin.ToString())
                             {
                                 var ManagerMainMenu = new ManagerMainMenu();
-                                //Hide();
+                                Hide();
                                 ManagerMainMenu.Show();
                                 correct = true;
                             }
