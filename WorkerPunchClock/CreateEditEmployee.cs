@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace WorkerPunchClock
 {
@@ -20,6 +21,7 @@ namespace WorkerPunchClock
 
         private void CreateEditEmployee_Load(object sender, EventArgs e)
         {
+            using (StaffLogin login = new StaffLogin())
             using (SqlConnection myConnection = new SqlConnection(str))
             using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {login.pin}", myConnection))
             {
@@ -38,4 +40,5 @@ namespace WorkerPunchClock
 
             }
         }
+    }
 }
