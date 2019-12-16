@@ -111,6 +111,7 @@
             this.payStubComboBox.Name = "payStubComboBox";
             this.payStubComboBox.Size = new System.Drawing.Size(137, 21);
             this.payStubComboBox.TabIndex = 5;
+            this.payStubComboBox.SelectedIndexChanged += new System.EventHandler(this.payStubComboBox_SelectedIndexChanged);
             // 
             // PayStub
             // 
@@ -122,6 +123,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "PayStub";
             this.Text = "PayStub";
+            this.Load += new System.EventHandler(this.PayStub_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

@@ -21,5 +21,16 @@ namespace WorkerPunchClock
         {
             new StaffMainMenu().Show();
         }
+
+        private void payStubComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PayStub_Load(object sender, EventArgs e)
+        {
+            
+            //payStubComboBox.Items.Add();
+        }
     }
 }
