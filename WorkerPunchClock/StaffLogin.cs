@@ -28,55 +28,59 @@ namespace WorkerPunchClock
         }
         public void getEmployeePinLogin()
         {
-            string userInput = StaffPasscodeInputBox.Text;
-            dbConnectionString = ConfigurationManager.ConnectionStrings["WorkerPunchClock.Properties.Settings.WorkersConnectionString"].ConnectionString;
-            using (SqlConnection myConnection = new SqlConnection(dbConnectionString))
-            using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {userInput}", myConnection))
-            {
-                DataTable userPin = new DataTable();
-
-                myConnection.Open();
-                employeePin.Fill(userPin);
-                myConnection.Close();
-                bool correct = false;
-                for (int row = 0; row < userPin.Rows.Count; row++)
+            try {
+                string userInput = StaffPasscodeInputBox.Text;
+                dbConnectionString = ConfigurationManager.ConnectionStrings["WorkerPunchClock.Properties.Settings.WorkersConnectionString"].ConnectionString;
+                using (SqlConnection myConnection = new SqlConnection(dbConnectionString))
+                using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {userInput}", myConnection))
                 {
-                    string position = (string)userPin.Rows[row]["Position"];
-                    if (!DBNull.Value.Equals(userPin.Rows[row]["PIN"]))
+                    DataTable userPin = new DataTable();
+
+                    myConnection.Open();
+                    employeePin.Fill(userPin);
+                    myConnection.Close();
+                    bool correct = false;
+                    for (int row = 0; row < userPin.Rows.Count; row++)
                     {
-                        dpin = (int)userPin.Rows[row]["PIN"];
-                        if (position == "Manager" && userInput == dpin.ToString())
+                        string position = (string)userPin.Rows[row]["Position"];
+                        if (!DBNull.Value.Equals(userPin.Rows[row]["PIN"]))
                         {
-                            var ManagerMainMenu = new ManagerMainMenu();
-                            //Hide();
-                            ManagerMainMenu.Show();
-                            correct = true;
-                        }
-                        else
-                        {
-                            if (userInput == dpin.ToString())
+                            dpin = (int)userPin.Rows[row]["PIN"];
+                            if (position == "Manager" && userInput == dpin.ToString())
                             {
-                                var staffMainMenu = new StaffMainMenu();
-                                Hide();
-                                staffMainMenu.Show();
+                                var ManagerMainMenu = new ManagerMainMenu();
+                                //Hide();
+                                ManagerMainMenu.Show();
                                 correct = true;
                             }
+                            else
+                            {
+                                if (userInput == dpin.ToString())
+                                {
+                                    var staffMainMenu = new StaffMainMenu();
+                                    Hide();
+                                    staffMainMenu.Show();
+                                    correct = true;
+                                }
+                            }
+
                         }
 
                     }
-
-                }
-                if (correct == false)
-                {
-                    DialogResult PasscodeError = MessageBox.Show("Please Enter Valid Passcode", "Passcode Incorrect", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    if (PasscodeError == DialogResult.OK)
+                    if (correct == false)
                     {
-                        StaffPasscodeInputBox.Text = "";
+                        DialogResult PasscodeError = MessageBox.Show("Please Enter Valid Passcode", "Passcode Incorrect", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (PasscodeError == DialogResult.OK)
+                        {
+                            StaffPasscodeInputBox.Text = "";
+                        }
                     }
-                }
 
+                }
             }
+            catch { }
         }
+        
         private void NumPadClick(object sender, EventArgs e)
         {
             try

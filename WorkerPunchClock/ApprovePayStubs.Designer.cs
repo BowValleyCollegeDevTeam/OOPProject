@@ -28,20 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.PayStubPanel = new System.Windows.Forms.Panel();
             this.EmployeeNameComboBox = new System.Windows.Forms.ComboBox();
             this.PayPeriodComboBox = new System.Windows.Forms.ComboBox();
             this.ApproveButton = new System.Windows.Forms.Button();
+            this.PaystubListBox = new System.Windows.Forms.ListBox();
             this.topInfoBar1 = new WorkerPunchClock.TopInfoBar();
             this.SuspendLayout();
-            // 
-            // PayStubPanel
-            // 
-            this.PayStubPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PayStubPanel.Location = new System.Drawing.Point(0, 120);
-            this.PayStubPanel.Name = "PayStubPanel";
-            this.PayStubPanel.Size = new System.Drawing.Size(800, 330);
-            this.PayStubPanel.TabIndex = 0;
             // 
             // EmployeeNameComboBox
             // 
@@ -50,14 +42,16 @@
             this.EmployeeNameComboBox.Name = "EmployeeNameComboBox";
             this.EmployeeNameComboBox.Size = new System.Drawing.Size(147, 21);
             this.EmployeeNameComboBox.TabIndex = 1;
+            this.EmployeeNameComboBox.SelectedIndexChanged += new System.EventHandler(this.EmployeeNameComboBox_SelectedIndexChanged);
             // 
             // PayPeriodComboBox
             // 
             this.PayPeriodComboBox.FormattingEnabled = true;
             this.PayPeriodComboBox.Location = new System.Drawing.Point(12, 65);
             this.PayPeriodComboBox.Name = "PayPeriodComboBox";
-            this.PayPeriodComboBox.Size = new System.Drawing.Size(147, 21);
+            this.PayPeriodComboBox.Size = new System.Drawing.Size(365, 21);
             this.PayPeriodComboBox.TabIndex = 2;
+            this.PayPeriodComboBox.SelectedIndexChanged += new System.EventHandler(this.PayPeriodComboBox_SelectedIndexChanged);
             // 
             // ApproveButton
             // 
@@ -67,6 +61,16 @@
             this.ApproveButton.TabIndex = 3;
             this.ApproveButton.Text = "APPROVE";
             this.ApproveButton.UseVisualStyleBackColor = true;
+            this.ApproveButton.Click += new System.EventHandler(this.ApproveButton_Click);
+            // 
+            // PaystubListBox
+            // 
+            this.PaystubListBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PaystubListBox.FormattingEnabled = true;
+            this.PaystubListBox.Location = new System.Drawing.Point(0, 160);
+            this.PaystubListBox.Name = "PaystubListBox";
+            this.PaystubListBox.Size = new System.Drawing.Size(800, 290);
+            this.PaystubListBox.TabIndex = 5;
             // 
             // topInfoBar1
             // 
@@ -81,23 +85,23 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.PaystubListBox);
             this.Controls.Add(this.topInfoBar1);
             this.Controls.Add(this.ApproveButton);
             this.Controls.Add(this.PayPeriodComboBox);
             this.Controls.Add(this.EmployeeNameComboBox);
-            this.Controls.Add(this.PayStubPanel);
             this.Name = "ApprovePayStubs";
             this.Text = "ApprovePayStubs";
+            this.Load += new System.EventHandler(this.ApprovePayStubs_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel PayStubPanel;
         private System.Windows.Forms.ComboBox EmployeeNameComboBox;
         private System.Windows.Forms.ComboBox PayPeriodComboBox;
         private System.Windows.Forms.Button ApproveButton;
         private TopInfoBar topInfoBar1;
+        private System.Windows.Forms.ListBox PaystubListBox;
     }
 }
