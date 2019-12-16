@@ -33,16 +33,23 @@ namespace WorkerPunchClock
 
         private void ClockInOutButton_Click(object sender, EventArgs e)
         {
-            WorkerStatusClass workerStatus = new WorkerStatusClass();
-            workerStatus.Status = "Clocked In";
+            //WorkerStatusClass workerStatus = new WorkerStatusClass();
+            //workerStatus.Status = "Clocked In";
 
             DateTime punchInOut = DateTime.Now;
             string ClockFormat = "MM/dd/yyyy HH:mm:ss";
 
             Label punchInOutLabel = new Label();
             punchInOutLabel.AutoSize = true;
+            punchInOutLabel.Font = new Font("Microsoft Sans Serif", 16);
             punchInOutLabel.Dock = DockStyle.Top;
-            punchInOutLabel.Text = punchInOut.ToString(ClockFormat);
+
+            Label Status = new Label();
+            Status.Text = "Clocked In At: ";
+            Status.Font = new Font("Microsoft Sans Serif", 16);
+            Status.Dock = DockStyle.Top;
+            
+            punchInOutLabel.Text = Status.Text + punchInOut.ToString(ClockFormat);
             ClockInOutPanel.Controls.Add(punchInOutLabel);
         }
     }

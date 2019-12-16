@@ -20,6 +20,8 @@ namespace WorkerPunchClock
         
         }
 
+        public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\coleb\Source\Repos\BowValleyCollegeDevTeam\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
+
         private void ManagerMainMenuClosing(object sender, FormClosingEventArgs e)
         {
             var staffLogin = new StaffLogin();
@@ -163,7 +165,7 @@ namespace WorkerPunchClock
         //}
         private void ManagerMainMenu_Load(object sender, EventArgs e)
         {
-            string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kara\Source\Repos\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
+           
             using (StaffLogin login = new StaffLogin())
             using (SqlConnection myConnection = new SqlConnection(str))
             using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {login.pin}", myConnection))

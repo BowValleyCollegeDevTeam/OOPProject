@@ -40,7 +40,7 @@
             this.EmployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.workersDataSet = new WorkerPunchClock.WorkersDataSet();
             this.employeesTableAdapter = new WorkerPunchClock.WorkersDataSetTableAdapters.EmployeesTableAdapter();
-            this.topInfoBar2 = new WorkerPunchClock.TopInfoBar();
+            this.topInfoBar3 = new WorkerPunchClock.TopInfoBar();
             ((System.ComponentModel.ISupportInitialize)(this.PayStubPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RequestTimeOffPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockInOutPictureBox)).BeginInit();
@@ -163,19 +163,20 @@
             // 
             this.employeesTableAdapter.ClearBeforeFill = true;
             // 
-            // topInfoBar2
+            // topInfoBar3
             // 
-            this.topInfoBar2.Location = new System.Drawing.Point(0, -1);
-            this.topInfoBar2.Name = "topInfoBar2";
-            this.topInfoBar2.Size = new System.Drawing.Size(678, 35);
-            this.topInfoBar2.TabIndex = 9;
+            this.topInfoBar3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topInfoBar3.Location = new System.Drawing.Point(0, 0);
+            this.topInfoBar3.Name = "topInfoBar3";
+            this.topInfoBar3.Size = new System.Drawing.Size(796, 35);
+            this.topInfoBar3.TabIndex = 9;
             // 
             // StaffMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 266);
-            this.Controls.Add(this.topInfoBar2);
+            this.ClientSize = new System.Drawing.Size(796, 266);
+            this.Controls.Add(this.topInfoBar3);
             this.Controls.Add(this.PayStubLabel);
             this.Controls.Add(this.PayStubPictureBox);
             this.Controls.Add(this.RequestTimeOffLabel);
@@ -211,9 +212,10 @@
         private System.Windows.Forms.PictureBox PayStubPictureBox;
         private System.Windows.Forms.Label PayStubLabel;
         private System.Windows.Forms.BindingSource EmployeeBindingSource;
-        private WorkersDataSet workersDataSet;
         private WorkersDataSetTableAdapters.EmployeesTableAdapter employeesTableAdapter;
         private TopInfoBar topInfoBar1;
         private TopInfoBar topInfoBar2;
+        private WorkersDataSet workersDataSet;
+        private TopInfoBar topInfoBar3;
     }
 }

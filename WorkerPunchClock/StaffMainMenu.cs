@@ -14,7 +14,7 @@ namespace WorkerPunchClock
 {
     public partial class StaffMainMenu : Form
     {
-        private string dbConnectionString;
+        public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\coleb\Source\Repos\BowValleyCollegeDevTeam\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
         public StaffMainMenu()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace WorkerPunchClock
 
         private void StaffMainMenu_Load(object sender, EventArgs e)
         {
-            string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kara\Source\Repos\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
+            
             using (StaffLogin login = new StaffLogin())
             using (SqlConnection myConnection = new SqlConnection(str))
             using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {login.pin}", myConnection))
@@ -48,6 +48,14 @@ namespace WorkerPunchClock
                     this.topInfoBar1.StaffNameLabel.Text = "Name: " + FirstName + " " + LastName;
                     
                 }
+
+                using (StaffLogin Login = new StaffLogin())
+                using (SqlConnection connection = new SqlConnection(str))
+                using (SqlDataAdapter Status = new SqlDataAdapter($"Select * FROM ClockInClockOut WHERE Status = {null}", connection))
+                {
+
+                }
+
 
 
 
