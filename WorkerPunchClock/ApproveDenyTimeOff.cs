@@ -21,6 +21,38 @@ namespace WorkerPunchClock
             EmployeeName();
         }
 
+        public void CheckStatus()
+        {
+            using (StaffLogin login = new StaffLogin())
+            using (SqlConnection myConnection = new SqlConnection(str))
+            using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {login.pin}", myConnection))
+            {
+                DataTable userPin = new DataTable();
+
+                myConnection.Open();
+                employeePin.Fill(userPin);
+                myConnection.Close();
+                for (int row = 0; row < userPin.Rows.Count; row++)
+                {
+                    string FirstName = (string)userPin.Rows[row]["FName"];
+                    string LastName = (string)userPin.Rows[row]["LName"];
+                    bool Status = (bool)userPin.Rows[row]["Status"];
+
+                    this.topInfoBar1.StaffNameLabel.Text = "Name: " + FirstName + " " + LastName;
+                    if (Status == false)
+                    {
+                        this.topInfoBar1.StatusLabel.Text = "Status: " + "Clocked Out";
+
+                    }
+                    else if (Status == true)
+                    {
+                        this.topInfoBar1.StatusLabel.Text = "Status: " + "Clocked In";
+
+                    }
+
+                }
+            }
+        }
         private void EmployeeName()
         {
             using (SqlConnection myconnection = new SqlConnection(str))
@@ -155,9 +187,8 @@ namespace WorkerPunchClock
 
         private void ApproveDenyTimeOff_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'workersDataSet.Employees' table. You can move, or remove it, as needed.
-            this.employeesTableAdapter.Fill(this.workersDataSet.Employees);
-
+            EmployeeName();
+            CheckStatus();
         }
 
         private void employeesDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

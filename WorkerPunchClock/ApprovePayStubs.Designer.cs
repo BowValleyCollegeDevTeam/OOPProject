@@ -92,6 +92,7 @@
             this.Controls.Add(this.EmployeeNameComboBox);
             this.Name = "ApprovePayStubs";
             this.Text = "ApprovePayStubs";
+            this.Load += new System.EventHandler(this.ApprovePayStubs_Load);
             this.ResumeLayout(false);
 
         }
