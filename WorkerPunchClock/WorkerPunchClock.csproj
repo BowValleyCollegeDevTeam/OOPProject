@@ -142,6 +142,7 @@
     <Compile Include="WorkSchedule.Designer.cs">
       <DependentUpon>WorkSchedule.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="9884272.resx" />
     <EmbeddedResource Include="ClockInOut.resx">
       <DependentUpon>ClockInOut.cs</DependentUpon>
     </EmbeddedResource>
