@@ -14,14 +14,16 @@ namespace WorkerPunchClock
 {
     public partial class CreateEditEmployee : Form
     {
+        // Kara Myers did this page
+        // also created the database
         public CreateEditEmployee()
         {
             InitializeComponent();
         }
 
-
+        // this is the string for the local database and must be changed on your computer if you click the server explorer and select the database in the properties take that connection string and copy and paste in the ""
         public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\coleb\Source\Repos\BowValleyCollegeDevTeam\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
-
+        // checks status gets employee based off user pin and populates the top info bar with current emploee and gets status for clocked in or clocked out
         public void CheckStatus()
         {
             using (StaffLogin login = new StaffLogin())
@@ -35,6 +37,7 @@ namespace WorkerPunchClock
                 myConnection.Close();
                 for (int row = 0; row < userPin.Rows.Count; row++)
                 {
+                    //gets the first name, last name and status and changes the info bar based on employee logged in 
                     string FirstName = (string)userPin.Rows[row]["FName"];
                     string LastName = (string)userPin.Rows[row]["LName"];
                     bool Status = (bool)userPin.Rows[row]["Status"];
@@ -56,35 +59,23 @@ namespace WorkerPunchClock
         }
         private void CreateEditEmployee_Load(object sender, EventArgs e)
         {
+            // checks status on every load
             CheckStatus();
             using (StaffLogin login = new StaffLogin())
             using (SqlConnection myConnection = new SqlConnection(str))
             {
-                using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {login.pin}", myConnection))
-                {
-                    DataTable userPin = new DataTable();
-
-                    myConnection.Open();
-                    employeePin.Fill(userPin);
-                    myConnection.Close();
-                    for (int row = 0; row < userPin.Rows.Count; row++)
-                    {
-                        string FirstName = (string)userPin.Rows[row]["FName"];
-                        string LastName = (string)userPin.Rows[row]["LName"];
-                        this.topInfoBar1.StaffNameLabel.Text = "Name: " + FirstName + " " + LastName;
-
-                    }
-
-                }
+                // Adds a new Employee option to the combo box
                 EmployeeNameComboBox.Items.Add("New Employee");
+                // gets all employees from database
                 using (SqlDataAdapter employeeInfo = new SqlDataAdapter($"SELECT * FROM Employees", myConnection))
                 {
+                    //creates empty table
                     DataTable employee = new DataTable();
-
+                    // opens connection and populates table
                     myConnection.Open();
                     employeeInfo.Fill(employee);
                     myConnection.Close();
-
+                    // for every employee in employees it adds to the employee combo box
                     for (int row = 0; row < employee.Rows.Count; row++)
                     {
                         string FirstName = (string)employee.Rows[row]["FName"];
@@ -102,6 +93,7 @@ namespace WorkerPunchClock
 
         private void EmployeeNameComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
+            // sets all the boxes to empty if new employee is selected
             if ( EmployeeNameComboBox.Text == "New Employee")
             {
                 FirstNameTextBox.Text = "";
@@ -115,18 +107,23 @@ namespace WorkerPunchClock
                 WageTextBox.Text = "";
                 positiontxtbx.Text = "";
             }
+            // splits the name of the combo box in order to get employee first and last name
             string[] selectedEmployee = EmployeeNameComboBox.Text.Split(' ');
             string emFName = selectedEmployee[0];
             string emLName = selectedEmployee[1];
             using (SqlConnection myConnection = new SqlConnection(str))
+                // selects from employees where first name and last name is equal to the selected employee
             using (SqlDataAdapter employeeInfo = new SqlDataAdapter($"SELECT * FROM Employees WHERE FName = '{emFName}' AND LName = '{emLName}' ", myConnection))
             {
+                // creates empty table
                 DataTable employee = new DataTable();
 
+                //opens connection and fills the employee table
                 myConnection.Open();
                 employeeInfo.Fill(employee);
                 myConnection.Close();
 
+                // grabs the info from employee and fills the the approprate textboxes
                 for (int row = 0; row < employee.Rows.Count; row++)
                 {
                     string FirstName = (string)employee.Rows[row]["FName"];
@@ -160,20 +157,24 @@ namespace WorkerPunchClock
         {
 
                 using (SqlConnection myConnection = new SqlConnection(str))
+                // selects all from the employees table
                 using (SqlDataAdapter employeeInfo = new SqlDataAdapter($"SELECT * FROM Employees", myConnection))
                 {
+                // creates new employee table that is empty
                     DataTable employee = new DataTable();
-
+                    
+                    // Opens and fills the employee table with employee data
                     myConnection.Open();
                     employeeInfo.Fill(employee);
 
+                // if it is New employee insert into employees
                     if (EmployeeNameComboBox.Text == "New Employee")
                     {
                         SqlCommand insertEmployee = new SqlCommand("INSERT INTO Employees (PIN,FName,LName,DOB,Address,City,Province,[Start Date],Position,Wage,Status) VALUES (" + Convert.ToInt32(PINTextBox.Text) + " , '" + FirstNameTextBox.Text + "', '" + LastNameTextBox.Text + "', '" + DateTime.ParseExact(DOBTextBox.Text, "yyyy-MM-dd",System.Globalization.CultureInfo.InvariantCulture) + "', '" + AddressTextBox.Text + "', '" + CityTextBox.Text + "', '" + ProvinceTextBox.Text + "', '" + DateTime.ParseExact(StartDateTextBox.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture) + "', '" + positiontxtbx.Text + "', '" + Convert.ToDecimal(WageTextBox.Text) + "' , 0);", myConnection);
                         insertEmployee.ExecuteNonQuery();
                         MessageBox.Show("Employee has been added");
                     }
-
+                    // if the user is selected edits employee and updates the database 
                     for (int row = 0; row < employee.Rows.Count; row++)
                     {
                         string[] selectedEmployee = EmployeeNameComboBox.Text.Split(' ');
