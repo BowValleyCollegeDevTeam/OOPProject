@@ -67,6 +67,19 @@ namespace WorkerPunchClock
 
         private void EmployeeNameComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
+            if ( EmployeeNameComboBox.Text == "New Employee")
+            {
+                FirstNameTextBox.Text = "";
+                LastNameTextBox.Text = "";
+                PINTextBox.Text = "";
+                DOBTextBox.Text = "";
+                AddressTextBox.Text = "";
+                CityTextBox.Text = "";
+                ProvinceTextBox.Text = "";
+                StartDateTextBox.Text = "";
+                WageTextBox.Text = "";
+                positiontxtbx.Text = "";
+            }
             string[] selectedEmployee = EmployeeNameComboBox.Text.Split(' ');
             string emFName = selectedEmployee[0];
             string emLName = selectedEmployee[1];
@@ -137,7 +150,7 @@ namespace WorkerPunchClock
                         {
                              SqlCommand UpdateEmployeeInfo = new SqlCommand("UPDATE Employees SET PIN =" + Convert.ToInt32(PINTextBox.Text) + ", FName = '" + FirstNameTextBox.Text + "', LName = '" + LastNameTextBox.Text + "', DOB ='" + DateTime.ParseExact(DOBTextBox.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture) + "', Address ='" + AddressTextBox.Text + "', City = '" + CityTextBox.Text + "', Province = '" + ProvinceTextBox.Text + "', [Start Date] = '" + DateTime.ParseExact(StartDateTextBox.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture) + "', Position = '" + positiontxtbx.Text + "', Wage = '" + Convert.ToDecimal(WageTextBox.Text) + "', Status = 0 WHERE FName = '" + FirstName + "' AND LName = '" + LastName + "' ;", myConnection);
                              UpdateEmployeeInfo.ExecuteNonQuery();
-
+                             MessageBox.Show("User has been updated");
                         }
 
                 }
