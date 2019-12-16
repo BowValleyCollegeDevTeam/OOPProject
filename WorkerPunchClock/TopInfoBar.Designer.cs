@@ -61,6 +61,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(678, 35);
             this.panel1.TabIndex = 2;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // StatusLabel
             // 
@@ -69,9 +70,10 @@
             this.StatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatusLabel.Location = new System.Drawing.Point(547, 10);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(121, 13);
+            this.StatusLabel.Size = new System.Drawing.Size(51, 13);
             this.StatusLabel.TabIndex = 5;
-            this.StatusLabel.Text = "Status: Clocked Out";
+            this.StatusLabel.Text = "Status: ";
+            this.StatusLabel.Click += new System.EventHandler(this.StatusLabel_Click);
             // 
             // TimeLabel
             // 
@@ -171,7 +173,7 @@
         private WorkersDataSetTableAdapters.EmployeesTableAdapter employeesTableAdapter;
         public System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Label StaffNameLabel;
-        private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.Splitter splitter2;
+        public System.Windows.Forms.Label StatusLabel;
     }
 }

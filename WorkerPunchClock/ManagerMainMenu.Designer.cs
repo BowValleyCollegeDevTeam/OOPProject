@@ -306,7 +306,7 @@
             this.Controls.Add(this.WorkScheduleLabel);
             this.Controls.Add(this.WorkSchedulePictureBox);
             this.Name = "ManagerMainMenu";
-            this.Text = "5";
+            this.Text = "Manager Form";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManagerMainMenuClosing);
             this.Load += new System.EventHandler(this.ManagerMainMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ApproveDenyTimeOffPictureBox)).EndInit();

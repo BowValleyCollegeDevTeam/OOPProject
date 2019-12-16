@@ -214,6 +214,6 @@
         private System.Windows.Forms.BindingSource EmployeeBindingSource;
         private WorkersDataSet workersDataSet;
         private WorkersDataSetTableAdapters.EmployeesTableAdapter employeesTableAdapter;
-        private TopInfoBar topInfoBar1;
+        public TopInfoBar topInfoBar1;
     }
 }

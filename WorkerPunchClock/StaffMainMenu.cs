@@ -14,7 +14,7 @@ namespace WorkerPunchClock
 {
     public partial class StaffMainMenu : Form
     {
-        private string dbConnectionString;
+        public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\coleb\Source\Repos\BowValleyCollegeDevTeam\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
         public StaffMainMenu()
         {
             InitializeComponent();
@@ -29,11 +29,10 @@ namespace WorkerPunchClock
             staffLogin.Show();
         }
 
-        private void StaffMainMenu_Load(object sender, EventArgs e)
+        public void CheckStatus()
         {
-            dbConnectionString = ConfigurationManager.ConnectionStrings["WorkerPunchClock.Properties.Settings.WorkersConnectionString"].ConnectionString;
             using (StaffLogin login = new StaffLogin())
-            using (SqlConnection myConnection = new SqlConnection(dbConnectionString))
+            using (SqlConnection myConnection = new SqlConnection(str))
             using (SqlDataAdapter employeePin = new SqlDataAdapter($"SELECT * FROM Employees WHERE PIN = {login.pin}", myConnection))
             {
                 DataTable userPin = new DataTable();
@@ -45,13 +44,29 @@ namespace WorkerPunchClock
                 {
                     string FirstName = (string)userPin.Rows[row]["FName"];
                     string LastName = (string)userPin.Rows[row]["LName"];
+                    bool Status = (bool)userPin.Rows[row]["Status"];
+
                     this.topInfoBar1.StaffNameLabel.Text = "Name: " + FirstName + " " + LastName;
-                    
+                    if (Status == false)
+                    {
+                        this.topInfoBar1.StatusLabel.Text = "Status: " + "Clocked Out";
+                        
+                    }
+                    else if (Status == true)
+                    {
+                        this.topInfoBar1.StatusLabel.Text = "Status: " + "Clocked In";
+                        
+                    }
+
                 }
-
-
-
             }
+        }
+
+        private void StaffMainMenu_Load(object sender, EventArgs e)
+        {
+
+            CheckStatus();
+           
         }
 
       
@@ -82,6 +97,7 @@ namespace WorkerPunchClock
 
         private void ClockInOutPictureBox_Click(object sender, EventArgs e)
         {
+
             new ClockInOut().Show();
 
         }
