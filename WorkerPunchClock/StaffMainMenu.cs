@@ -14,6 +14,8 @@ namespace WorkerPunchClock
 {
     public partial class StaffMainMenu : Form
     {
+        // Connection string for database
+        //NOTE: This string has to be used for each user running the code.
         public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\coleb\Source\Repos\BowValleyCollegeDevTeam\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
         public StaffMainMenu()
         {
@@ -22,12 +24,15 @@ namespace WorkerPunchClock
             
         }
 
+        //When this form is closed it will open the Staff Login Form again.
         private void StaffMainMenuClosing(object sender, FormClosingEventArgs e)
         {
             var staffLogin = new StaffLogin();
             staffLogin.Show();
         }
 
+        //This checks the status of the Employee from the database.
+        //Sets the top menu bar values equal to the values in the database for the employee.
         public void CheckStatus()
         {
             using (StaffLogin login = new StaffLogin())
@@ -69,7 +74,7 @@ namespace WorkerPunchClock
         }
 
       
-
+        // These functions change the fore color of labels when the mouse hovers over them.
         private void WorkScheduleMouseHover(object sender, EventArgs e)
         {
             WorkScheduleLabel.ForeColor = Color.Red;

@@ -14,12 +14,16 @@ namespace WorkerPunchClock
 {
     public partial class ClockInOut : Form
     {
+        // Connection String for Database
+        // NOTE: This has to be changed for each user that is running the code.
         public string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\coleb\Source\Repos\BowValleyCollegeDevTeam\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
         public ClockInOut()
         {
             InitializeComponent();
         }
 
+        //This checks the status of the Employee from the database.
+        //Sets the top menu bar values equal to the values in the database for the employee.
         public void CheckStatus()
         {
             using (StaffLogin login = new StaffLogin())
@@ -53,15 +57,15 @@ namespace WorkerPunchClock
             }
         }
 
+        //On load run Check Status Function.
         private void ClockInOut_Load(object sender, EventArgs e)
         { 
             CheckStatus();
         }
 
+        //Run this code when ClockIn button is clicked.
         private void ClockInButton_Click(object sender, EventArgs e)
         {
-
-           
             using (StaffLogin login = new StaffLogin())
             using (SqlConnection myConnection = new SqlConnection(str))
             using (SqlDataAdapter ClockAdapter = new SqlDataAdapter($"SELECT * FROM ClockInClockOut", myConnection))
@@ -87,7 +91,9 @@ namespace WorkerPunchClock
                         ClockIn.Text = "Clock In At: " + Clock.ToString("MM/dd/yyyy" + " " + "HH:mm:ss");
                         ClockInOutPanel.Controls.Add(ClockIn);
 
+                        //Inserting Data into database ClockInClockOut Table
                         SqlCommand InsertClockinData = new SqlCommand("insert into ClockInClockOut (EmployeeID, StartTime, EndTime, Date) values ('" + EmployeeId + "', '" + Clock + "', '"+Clock.AddHours(8)+"', '" + Date + "');", myConnection);
+                        //Update Status Data In Database with New Data.
                         SqlCommand UpdateEmployeeStatus = new SqlCommand("update Employees Set Status = '" + 1 + "' WHERE EmployeeID = '"+EmployeeId+"' ", myConnection);
                         InsertClockinData.ExecuteNonQuery();
                         UpdateEmployeeStatus.ExecuteNonQuery();
@@ -107,7 +113,9 @@ namespace WorkerPunchClock
                         ClockOut.Text = "Clock Out At: " + Clock.ToString("MM/dd/yyyy" + " " + "HH:mm:ss");
                         ClockInOutPanel.Controls.Add(ClockOut);
 
+                        //Update EndTime in database ClockInClockOut Table with new EndTime Data.
                         SqlCommand UpdateEndTime = new SqlCommand("update ClockInClockOut Set EndTime = '" + Clock + "' WHERE EmployeeID = '"+EmployeeId+"' AND Date = '"+Date+"' ", myConnection);
+                        //Update Status in database Employee Table with new Status Data
                         SqlCommand UpdateEmployeeStatus = new SqlCommand("update Employees Set Status = '" + 0 + "' WHERE EmployeeID = '"+EmployeeId+"' ", myConnection);
                         UpdateEndTime.ExecuteNonQuery();
                         UpdateEmployeeStatus.ExecuteNonQuery();
