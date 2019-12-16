@@ -200,6 +200,7 @@ namespace WorkerPunchClock
 
                             SqlCommand insertSchedule = new SqlCommand(schedulesemp, myConnection);
                             insertSchedule.ExecuteNonQuery();
+                            MessageBox.Show("Schedule Has Been Added");
                         }
                     }
                     for (int x = 0; x < schedule.Rows.Count; x++)
@@ -241,11 +242,15 @@ namespace WorkerPunchClock
 
         private void schedulelstbx_MouseClick(object sender, MouseEventArgs e)
         {
-            string selected = schedulelstbx.SelectedItem.ToString();
-            string[] change = selected.Split(' ');
-            datetxtbx.Text = change[0];
-            startTimetxtbx.Text = change[1];
-            endTimetxtbx.Text = change[3];
+            try
+            {
+                string selected = schedulelstbx.SelectedItem.ToString();
+                string[] change = selected.Split(' ');
+                datetxtbx.Text = change[0];
+                startTimetxtbx.Text = change[1];
+                endTimetxtbx.Text = change[3];
+            }
+            catch { };
 
         }
     }
