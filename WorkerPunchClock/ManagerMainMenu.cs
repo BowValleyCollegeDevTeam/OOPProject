@@ -163,6 +163,7 @@ namespace WorkerPunchClock
         //}
         private void ManagerMainMenu_Load(object sender, EventArgs e)
         {
+            TopInfoBar managerInfo = new TopInfoBar();
             string str = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Kara\Source\Repos\OOPProject\WorkerPunchClock\Workers.mdf;Integrated Security=True";
             using (StaffLogin login = new StaffLogin())
             using (SqlConnection myConnection = new SqlConnection(str))
