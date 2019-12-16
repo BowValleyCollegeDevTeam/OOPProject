@@ -190,6 +190,9 @@
             this.Text = "Staff Main Menu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StaffMainMenuClosing);
             this.Load += new System.EventHandler(this.StaffMainMenu_Load);
+            this.Click += new System.EventHandler(this.StaffMainMenuClick);
+            this.Enter += new System.EventHandler(this.StaffMainMenuEnter);
+            this.MouseEnter += new System.EventHandler(this.StaffMainMenuMouseEnter);
             ((System.ComponentModel.ISupportInitialize)(this.PayStubPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RequestTimeOffPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockInOutPictureBox)).EndInit();

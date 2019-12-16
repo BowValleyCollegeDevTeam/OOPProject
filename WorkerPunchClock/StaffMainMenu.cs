@@ -25,7 +25,6 @@ namespace WorkerPunchClock
         private void StaffMainMenuClosing(object sender, FormClosingEventArgs e)
         {
             var staffLogin = new StaffLogin();
-            Hide();
             staffLogin.Show();
         }
 
@@ -97,9 +96,7 @@ namespace WorkerPunchClock
 
         private void ClockInOutPictureBox_Click(object sender, EventArgs e)
         {
-
             new ClockInOut().Show();
-
         }
 
         private void RequestTimeOffMouseHover(object sender, EventArgs e)
@@ -132,7 +129,19 @@ namespace WorkerPunchClock
             new PayStub().Show();
         }
 
+        private void StaffMainMenuEnter(object sender, EventArgs e)
+        {
+           
+        }
 
-        
+        private void StaffMainMenuClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StaffMainMenuMouseEnter(object sender, EventArgs e)
+        {
+            CheckStatus();
+        }
     }
 }

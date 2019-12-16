@@ -309,6 +309,7 @@
             this.Text = "Manager Form";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManagerMainMenuClosing);
             this.Load += new System.EventHandler(this.ManagerMainMenu_Load);
+            this.MouseEnter += new System.EventHandler(this.ManagerMainMenuMouseEnter);
             ((System.ComponentModel.ISupportInitialize)(this.ApproveDenyTimeOffPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ApprovePayStubsPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CreateEditEmployeePictureBox)).EndInit();

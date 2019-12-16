@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.ClockInButton = new System.Windows.Forms.Button();
             this.ClockInOutPanel = new System.Windows.Forms.Panel();
-            this.topInfoBar1 = new WorkerPunchClock.TopInfoBar();
             this.clockInClockOutBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.workersDataSet = new WorkerPunchClock.WorkersDataSet();
             this.clockInClockOutTableAdapter1 = new WorkerPunchClock.WorkersDataSetTableAdapters.ClockInClockOutTableAdapter();
             this.employeesTableAdapter1 = new WorkerPunchClock.WorkersDataSetTableAdapters.EmployeesTableAdapter();
             this.tableAdapterManager1 = new WorkerPunchClock.WorkersDataSetTableAdapters.TableAdapterManager();
+            this.topInfoBar1 = new WorkerPunchClock.TopInfoBar();
             ((System.ComponentModel.ISupportInitialize)(this.clockInClockOutBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.workersDataSet)).BeginInit();
             this.SuspendLayout();
@@ -62,14 +62,6 @@
             this.ClockInOutPanel.Name = "ClockInOutPanel";
             this.ClockInOutPanel.Size = new System.Drawing.Size(292, 415);
             this.ClockInOutPanel.TabIndex = 3;
-            // 
-            // topInfoBar1
-            // 
-            this.topInfoBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.topInfoBar1.Location = new System.Drawing.Point(0, 0);
-            this.topInfoBar1.Name = "topInfoBar1";
-            this.topInfoBar1.Size = new System.Drawing.Size(416, 35);
-            this.topInfoBar1.TabIndex = 2;
             // 
             // clockInClockOutBindingSource
             // 
@@ -99,6 +91,14 @@
             this.tableAdapterManager1.ScheduleTableAdapter = null;
             this.tableAdapterManager1.UpdateOrder = WorkerPunchClock.WorkersDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // topInfoBar1
+            // 
+            this.topInfoBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topInfoBar1.Location = new System.Drawing.Point(0, 0);
+            this.topInfoBar1.Name = "topInfoBar1";
+            this.topInfoBar1.Size = new System.Drawing.Size(416, 35);
+            this.topInfoBar1.TabIndex = 2;
+            // 
             // ClockInOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -109,6 +109,8 @@
             this.Controls.Add(this.ClockInButton);
             this.Name = "ClockInOut";
             this.Text = "pane";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClockInOutClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ClockInOutClosed);
             this.Load += new System.EventHandler(this.ClockInOut_Load);
             ((System.ComponentModel.ISupportInitialize)(this.clockInClockOutBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.workersDataSet)).EndInit();
